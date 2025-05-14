@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import image from "../assets/herolaptops.png";
 export default function Hero() {
   return (
-    <div className="container border-2 mx-auto px-4  md: pt-7 flex flex-col md:flex-row items-center justify-center">
+    <div className="container  mx-auto px-4  md: pt-7 flex flex-col md:flex-row items-center justify-center">
       <div className="md:w-1/2 mb-10 px-10 md:mb-0">
         <h1 className="text-5xl md:text-6xl font-bold text-[#0a1952] mb-4">Gadget Ghar</h1>
         <p className="text-2xl md:text-3xl text-[#0a1952] mb-8">Every Gadget, Every Budget</p>
