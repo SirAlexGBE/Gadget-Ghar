@@ -93,13 +93,12 @@ export default function Review() {
 
   // Get the appropriate image component
   const getImage = (imageName) => {
-    // Replace this with your actual image logic
-    // For example: if (imageName === 'p1') return p1;
     return imageName;
   };
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-12">
+      <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Happy Customers</h2>
       <div className="relative">
         <div className="overflow-hidden">
           <div className="flex transition-transform duration-500 ease-in-out" style={{transform: `translateX(-${currentIndex * 100}%)`}}>

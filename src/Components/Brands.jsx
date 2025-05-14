@@ -12,15 +12,13 @@ export default function Brands() {
     {name: "Sony", logo: sonyLogo},
     {name: "Huawei", logo: huaweiLogo},
     {name: "Canon", logo: canonLogo},
-
     {name: "Lenovo", logo: lenovoLogo},
   ];
 
   return (
     <section className="container mx-auto py-12 px-4">
       <div className="mb-6">
-        <h2 className="text-3xl font-bold text-gray-900">Top Brands</h2>
-        <div className="h-px bg-gray-300 w-full mt-4"></div>
+        <h2 className="text-3xl font-bold text-center text-gray-900">Top Brands</h2>
       </div>
 
       <div className="flex flex-wrap justify-evenly items-center gap-y-10 mt-12">
