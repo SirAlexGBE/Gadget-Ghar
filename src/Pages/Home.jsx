@@ -5,6 +5,7 @@ import Catagories from "../Components/Catagories";
 import ServiceFeatures from "../Components/ServiceFeatures";
 import Banner from "../Components/Banner";
 import Brands from "../Components/Brands";
+import Review from "../Components/Review";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <ServiceFeatures />
         <Banner />
         <Brands />
+        <Review />
       </div>
     </>
   );
