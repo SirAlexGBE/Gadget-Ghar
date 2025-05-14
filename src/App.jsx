@@ -5,6 +5,7 @@ import Wishlist from "./Pages/Wishlist";
 import Products from "./Pages/Products";
 import About from "./Pages/About";
 import Cart from "./Pages/Cart";
+import Footer from "./Components/Footer";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Footer />
     </>
   );
 }
