@@ -1,4 +1,5 @@
 import {Facebook, Home, MessageCircle, PhoneIcon as WhatsApp} from "lucide-react";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -19,15 +20,15 @@ const Footer = () => {
             </div>
             <div className="border-t border-gray-300 w-full my-4"></div>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-600 hover:text-gray-800">
+              <Link to="#" className="text-gray-600 hover:text-gray-800">
                 <MessageCircle size={24} strokeWidth={1.5} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-800">
+              </Link>
+              <Link to="#" className="text-gray-600 hover:text-gray-800">
                 <Facebook size={24} strokeWidth={1.5} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-800">
+              </Link>
+              <Link to="#" className="text-gray-600 hover:text-gray-800">
                 <WhatsApp size={24} strokeWidth={1.5} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -35,14 +36,36 @@ const Footer = () => {
           <div className="flex flex-col space-y-4">
             <h3 className="text-xl font-semibold text-teal-700 mb-2">Find product</h3>
             <ul className="space-y-3">
-              {["DJI Mavic Mini", "EPSON Projectors", "Smart phones", "Automatic watch", "Hair straighteners"].map((item) => (
-                <li key={item} className="flex items-center">
-                  <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
-                  <a href="#" className="text-teal-700 hover:underline hover:text-teal-900">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/products/dji-mavic-mini" className="text-teal-700 hover:underline hover:text-teal-900">
+                  DJI Mavic Mini
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/products/epson-projectors" className="text-teal-700 hover:underline hover:text-teal-900">
+                  EPSON Projectors
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/products/mobile-phones" className="text-teal-700 hover:underline hover:text-teal-900">
+                  Smart phones
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/products/wearables" className="text-teal-700 hover:underline hover:text-teal-900">
+                  Automatic watch
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/products/powerbank" className="text-teal-700 hover:underline hover:text-teal-900">
+                  Powerbank
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -50,14 +73,36 @@ const Footer = () => {
           <div className="flex flex-col space-y-4">
             <h3 className="text-xl font-semibold text-teal-700 mb-2">Get help</h3>
             <ul className="space-y-3">
-              {["About us", "Contact us", "Return policy", "Privacy policy", "Payment policy"].map((item) => (
-                <li key={item} className="flex items-center">
-                  <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
-                  <a href="#" className="text-teal-700 hover:text-teal-900 hover:underline">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/about" className="text-teal-700 hover:text-teal-900 hover:underline">
+                  About us
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/about/#contact" className="text-teal-700 hover:text-teal-900 hover:underline">
+                  Contact us
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/T&S/#return-policy" className="text-teal-700 hover:text-teal-900 hover:underline">
+                  Return policy
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/T&S/privacy-policy" className="text-teal-700 hover:text-teal-900 hover:underline">
+                  Privacy policy
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/T&S/payment-policy" className="text-teal-700 hover:text-teal-900 hover:underline">
+                  Payment policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -65,14 +110,36 @@ const Footer = () => {
           <div className="flex flex-col space-y-4">
             <h3 className="text-xl font-semibold text-teal-700 mb-2">About us</h3>
             <ul className="space-y-3">
-              {["News", "Service", "Our policy", "Custmer care", "FAQ's"].map((item) => (
-                <li key={item} className="flex items-center">
-                  <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
-                  <a href="#" className="text-teal-700 hover:underline hover:text-teal-900">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/news" className="text-teal-700 hover:underline hover:text-teal-900">
+                  News
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/service" className="text-teal-700 hover:underline hover:text-teal-900">
+                  Service
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/our-policy" className="text-teal-700 hover:underline hover:text-teal-900">
+                  Our policy
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/customer-care" className="text-teal-700 hover:underline hover:text-teal-900">
+                  Customer care
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
+                <Link to="/faqs" className="text-teal-700 hover:underline hover:text-teal-900">
+                  FAQ's
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
