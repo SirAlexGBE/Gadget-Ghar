@@ -10,11 +10,11 @@ function Header() {
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
           <p>Need help? Call us: (+977) 9842852413</p>
           <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center gap-1.5">
+            <Link to="/about" className="flex items-center gap-1.5">
               <MapPin className="size-4" />
               <span className="hidden sm:inline">Our store</span>
             </Link>
-            <Link to="/" className="flex items-center gap-1.5">
+            <Link to="/order" className="flex items-center gap-1.5">
               <Truck className="size-4" />
               <span className="hidden sm:inline">Track your order</span>
             </Link>
@@ -42,7 +42,7 @@ function Header() {
 
           {/* User Icons */}
           <div className="flex items-center gap-4 text-sm">
-            <Link to="/" className="flex items-center gap-1.5">
+            <Link to="/user" className="flex items-center gap-1.5">
               <User className="size-5" />
               <span className="hidden md:inline">Sign in</span>
             </Link>
@@ -50,7 +50,7 @@ function Header() {
               <Heart className="size-5" />
               <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
             </Link>
-            <Link to="/" className="flex items-center gap-1.5 relative">
+            <Link to="/cart" className="flex items-center gap-1.5 relative">
               <ShoppingCart className="size-5" />
               <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
               <span className="hidden md:inline">Cart</span>
@@ -70,7 +70,7 @@ function Header() {
               Home
             </Link>
             <ProductDropdown />
-            <Link to="/" className="text-neutral-800 font-medium">
+            <Link to="/about" className="text-neutral-800 font-medium">
               About us
             </Link>
           </nav>
