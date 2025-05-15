@@ -1,5 +1,5 @@
 import React from "react";
-import Laptop from "../assets/Banner.png";
+import Laptop from "../../assets/Banner.png";
 export default function Banner() {
   return (
     <div className="relative  h-[400px] rounded-2xl md:h-[300px] m-5 overflow-hidden">

@@ -1,9 +1,9 @@
-import Accessories from "../assets/Cata-accessories.png";
-import Phone from "../assets/Cata-phone.png";
-import Camera from "../assets/Cata-Camera.png";
-import Laptop from "../assets/Cata-laptop.png";
-import Gaming from "../assets/Cata-Gaming.png";
-import Watch from "../assets/Cata-watches.png";
+import Accessories from "../../assets/Cata-accessories.png";
+import Phone from "../../assets/Cata-phone.png";
+import Camera from "../../assets/Cata-Camera.png";
+import Laptop from "../../assets/Cata-laptop.png";
+import Gaming from "../../assets/Cata-Gaming.png";
+import Watch from "../../assets/Cata-watches.png";
 import {Link} from "react-router-dom";
 
 export default function Catagories() {

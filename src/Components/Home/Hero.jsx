@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import image from "../assets/herolaptops.png";
+import image from "../../assets/herolaptops.png";
 export default function Hero() {
   return (
     <div className="container  mx-auto px-4  md: pt-7 flex flex-col md:flex-row items-center justify-center">

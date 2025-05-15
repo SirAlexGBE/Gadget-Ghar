@@ -1,5 +1,8 @@
 @import "tailwindcss";
-@plugin "daisyui";
+::-webkit-scrollbar {
+  display: none;
+}
+
 @theme {
   --font-roboto: "Roboto", "sans-serif";
 }

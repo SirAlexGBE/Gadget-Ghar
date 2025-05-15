@@ -1,11 +1,11 @@
-import Header from "./Components/Header";
+import Header from "./Components/Home/Header";
 import Home from "./Pages/Home";
 import {Routes, Route} from "react-router-dom";
 import Wishlist from "./Pages/Wishlist";
 import Products from "./Pages/Products";
 import About from "./Pages/About";
 import Cart from "./Pages/Cart";
-import Footer from "./Components/Footer";
+import Footer from "./Components/Home/Footer";
 
 export default function App() {
   return (

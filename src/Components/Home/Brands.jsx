@@ -1,9 +1,9 @@
-import appleLogo from "../assets/apple-logo.png";
-import sonyLogo from "../assets/sony-logo.png";
-import samsungLogo from "../assets/samsung-logo.png";
-import canonLogo from "../assets/Cannon-logo.png";
-import huaweiLogo from "../assets/huawei-logo.png";
-import lenovoLogo from "../assets/Lenevo-logo.png";
+import appleLogo from "../../assets/apple-logo.png";
+import sonyLogo from "../../assets/sony-logo.png";
+import samsungLogo from "../../assets/samsung-logo.png";
+import canonLogo from "../../assets/Cannon-logo.png";
+import huaweiLogo from "../../assets/huawei-logo.png";
+import lenovoLogo from "../../assets/Lenevo-logo.png";
 
 export default function Brands() {
   const brands = [

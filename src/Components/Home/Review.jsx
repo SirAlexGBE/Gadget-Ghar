@@ -1,13 +1,13 @@
 import React from "react";
-import p1 from "../assets/Team1.avif";
-import p2 from "../assets/Team2.jpg";
-import p3 from "../assets/Team3.jpg";
-import p4 from "../assets/Team4.jpg";
-import p5 from "../assets/Team5.jpg";
-import p6 from "../assets/Team6.jpg";
-import p7 from "../assets/Team7.jpg";
-import p8 from "../assets/Team8.jpeg";
-import p9 from "../assets/Team9.jpg";
+import p1 from "../../assets/Team1.avif";
+import p2 from "../../assets/Team2.jpg";
+import p3 from "../../assets/Team3.jpg";
+import p4 from "../../assets/Team4.jpg";
+import p5 from "../../assets/Team5.jpg";
+import p6 from "../../assets/Team6.jpg";
+import p7 from "../../assets/Team7.jpg";
+import p8 from "../../assets/Team8.jpeg";
+import p9 from "../../assets/Team9.jpg";
 
 import {useEffect, useState} from "react";
 
