@@ -1,6 +1,6 @@
 import {useState, useRef, useEffect} from "react";
 import {Link} from "react-router-dom";
-import {ChevronDown, Smartphone, Monitor, Tablet, Watch, Headphones, Camera, Gamepad2, Network, Settings} from "lucide-react";
+import {ChevronDown, Smartphone, Monitor, Tablet, Watch, Headphones, Camera, Gamepad2, Settings} from "lucide-react";
 
 export default function ProductDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function ProductDropdown() {
     {name: "Audio", icon: Headphones, path: "/products/audio"},
     {name: "Cameras", icon: Camera, path: "/products/cameras"},
     {name: "Gaming", icon: Gamepad2, path: "/products/gaming"},
-    {name: "Networking", icon: Network, path: "/products/networking"},
+
     {name: "Accessories", icon: Settings, path: "/products/accessories"},
   ];
 

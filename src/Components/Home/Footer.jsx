@@ -1,5 +1,6 @@
 import {Facebook, Home, MessageCircle, PhoneIcon as WhatsApp} from "lucide-react";
 import {Link} from "react-router-dom";
+import {HashLink} from "react-router-hash-link";
 
 const Footer = () => {
   return (
@@ -81,9 +82,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
-                <Link to="/about/#contact" className="text-teal-700 hover:text-teal-900 hover:underline">
+                <HashLink to="/about#contact" className="text-teal-700 hover:text-teal-900 hover:underline">
                   Contact us
-                </Link>
+                </HashLink>
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
@@ -112,15 +113,9 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center">
                 <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
-                <Link to="/news" className="text-teal-700 hover:underline hover:text-teal-900">
-                  News
-                </Link>
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
-                <Link to="/service" className="text-teal-700 hover:underline hover:text-teal-900">
+                <HashLink to="/about#service" className="text-teal-700 hover:underline hover:text-teal-900">
                   Service
-                </Link>
+                </HashLink>
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
@@ -130,9 +125,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
-                <Link to="/customer-care" className="text-teal-700 hover:underline hover:text-teal-900">
+                <HashLink to="/about#contact" className="text-teal-700 hover:underline hover:text-teal-900">
                   Customer care
-                </Link>
+                </HashLink>
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 rounded-full bg-gray-300 mr-3"></span>
