@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import p1 from "../../assets/Team1.avif";
 import p2 from "../../assets/Team2.jpg";
 import p3 from "../../assets/Team3.jpg";
@@ -9,10 +9,7 @@ import p7 from "../../assets/Team7.jpg";
 import p8 from "../../assets/Team8.jpeg";
 import p9 from "../../assets/Team9.jpg";
 
-import {useEffect, useState} from "react";
-
 export default function Review() {
-  // Sample review data
   const reviews = [
     {
       id: 1,
@@ -70,15 +67,25 @@ export default function Review() {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalSlides = Math.ceil(reviews.length / 3);
+  // Responsive: 1 review per slide on small screens, 3 on md+
+  const [reviewsPerSlide, setReviewsPerSlide] = useState(window.innerWidth < 640 ? 1 : 3);
 
-  // Auto-scroll every 5 seconds
+  useEffect(() => {
+    const handleResize = () => {
+      setReviewsPerSlide(window.innerWidth < 640 ? 1 : 3);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const totalSlides = Math.ceil(reviews.length / reviewsPerSlide);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-scroll every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
     }, 6000);
-
     return () => clearInterval(interval);
   }, [totalSlides]);
 
@@ -86,15 +93,11 @@ export default function Review() {
   const goToPrevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalSlides - 1 : prevIndex - 1));
   };
-
   const goToNextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   };
 
-  // Get the appropriate image component
-  const getImage = (imageName) => {
-    return imageName;
-  };
+  const getImage = (imageName) => imageName;
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-12">
@@ -103,13 +106,12 @@ export default function Review() {
         <div className="overflow-hidden">
           <div className="flex transition-transform duration-500 ease-in-out" style={{transform: `translateX(-${currentIndex * 100}%)`}}>
             {Array.from({length: totalSlides}).map((_, slideIndex) => (
-              <div key={slideIndex} className="w-full flex-shrink-0 flex space-x-4">
-                {reviews.slice(slideIndex * 3, slideIndex * 3 + 3).map((review) => (
-                  <div key={review.id} className="flex-1 border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:shadow-md">
+              <div key={slideIndex} className="w-full flex-shrink-0 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                {reviews.slice(slideIndex * reviewsPerSlide, slideIndex * reviewsPerSlide + reviewsPerSlide).map((review) => (
+                  <div key={review.id} className="flex-1 border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:shadow-md bg-white">
                     <div className="flex items-center mb-4">
                       <div className="relative">
                         <div className="absolute inset-0 rounded-full border-2 border-dashed border-amber-400"></div>
-
                         <div className="m-1">
                           <div className="w-16 h-16 rounded-full overflow-hidden bg-sky-200 flex items-center justify-center">
                             <img src={getImage(review.image) || "/placeholder.svg"} alt={review.name} className="w-full h-full object-cover" />
@@ -128,6 +130,7 @@ export default function Review() {
           </div>
         </div>
 
+        {/* Navigation Buttons */}
         <button
           onClick={goToPrevSlide}
           className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
@@ -147,6 +150,7 @@ export default function Review() {
           </svg>
         </button>
 
+        {/* Dots */}
         <div className="flex justify-center mt-6 space-x-2">
           {Array.from({length: totalSlides}).map((_, index) => (
             <button
