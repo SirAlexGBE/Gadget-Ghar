@@ -9,6 +9,7 @@ import Footer from "./Components/Home/Footer";
 import Policy from "./Pages/Policy";
 import Catagories from "./Pages/Catagory";
 import PagenotFound from "./Pages/PagenotFound";
+import ProductDetails from "./Pages/ProductDetails";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/productdetails" element={<ProductDetails />} />
         <Route path="/catagories" element={<Catagories />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
