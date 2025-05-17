@@ -5,6 +5,7 @@ import {Player} from "@lottiefiles/react-lottie-player";
 import productNotFound from "../Animation/Product not found.json";
 import {ShoppingCart, Heart, Star, ChevronRight, Truck, RotateCcw} from "lucide-react";
 import RelatedProducts from "../Components/RelatedProducts";
+import SalesProducts from "../Components/Home/SalesProducts";
 
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
@@ -156,6 +157,7 @@ export default function ProductDetails() {
         </div>
       </div>
       <RelatedProducts product={product} />
+      <SalesProducts />
     </>
   );
 }

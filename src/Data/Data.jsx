@@ -108,7 +108,8 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "47mm stainless steel, Exynos W930, 1.5-inch Super AMOLED (480x480), LTE, blood pressure monitor, ECG, 5ATM water resistance, rotating bezel.",
-    image1: "https://www.samsungplaza.com.np/public/files/B7CA0B455C808B9-R960_Black.png",
+    image: "https://www.samsungplaza.com.np/public/files/B7CA0B455C808B9-R960_Black.png",
+    image1: "https://cdn.gadgetbytenepal.com/wp-content/uploads/2023/06/Samsung-Galaxy-Watch-6-Classic-Price-in-Nepal.jpg",
   },
   {
     id: 9,
