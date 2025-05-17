@@ -5,7 +5,7 @@ export default function ServiceFeatures() {
     {
       icon: <Package className="w-12 h-12 text-amber-400" />,
       title: "Free delivery",
-      description: "on order above $50.00",
+      description: "on order above Nrs. 5000",
     },
     {
       icon: <Crown className="w-12 h-12 text-amber-400" />,
