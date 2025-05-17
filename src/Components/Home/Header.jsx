@@ -69,6 +69,9 @@ function Header() {
             <Link to="/" className="text-neutral-800 font-medium">
               Home
             </Link>
+            <Link to="/products" className="text-neutral-800 font-medium">
+              Products
+            </Link>
             <ProductDropdown />
             <Link to="/about" className="text-neutral-800 font-medium">
               About us

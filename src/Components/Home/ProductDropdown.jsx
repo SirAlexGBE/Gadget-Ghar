@@ -1,6 +1,6 @@
 import {useState, useRef, useEffect} from "react";
 import {Link} from "react-router-dom";
-import {ChevronDown, Smartphone, Monitor, Tablet, Watch, Headphones, Camera, Gamepad2, Settings} from "lucide-react";
+import {ChevronDown, Smartphone, Monitor, Tablet, Watch, Headphones, Camera, Gamepad2, Settings, Boxes} from "lucide-react";
 
 export default function ProductDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,21 +27,21 @@ export default function ProductDropdown() {
   };
 
   const categories = [
-    {name: "Mobile Phones", icon: Smartphone, path: "/products/mobile-phones", highlight: true},
-    {name: "Laptops & Computers", icon: Monitor, path: "/products/laptops-computers"},
-    {name: "Tablets & E-reader", icon: Tablet, path: "/products/tablets-e-readers"},
+    {name: "All Catagories", icon: Boxes, path: "/catagories"},
+    {name: "Mobile Phones", icon: Smartphone, path: "/products/smartphones"},
+    {name: "Laptops & Computers", icon: Monitor, path: "/products/laptops"},
+    {name: "Tablets & E-reader", icon: Tablet, path: "/products/tablets"},
     {name: "Wearables", icon: Watch, path: "/products/wearables"},
     {name: "Audio", icon: Headphones, path: "/products/audio"},
     {name: "Cameras", icon: Camera, path: "/products/cameras"},
     {name: "Gaming", icon: Gamepad2, path: "/products/gaming"},
-
     {name: "Accessories", icon: Settings, path: "/products/accessories"},
   ];
 
   return (
     <div className="relative" ref={dropdownRef} onKeyDown={handleKeyDown}>
       <button className="flex items-center text-neutral-800 font-medium gap-1" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} aria-haspopup="true">
-        Products
+        Catagories
         <ChevronDown className={`size-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
 

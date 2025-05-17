@@ -1,0 +1,42 @@
+import {Heart} from "lucide-react";
+
+const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge}) => {
+  return (
+    <div className="group flex flex-col rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white max-w-xs">
+      {/* Product Image Container */}
+      <div className="relative overflow-hidden">
+        {isOnSale && <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">SALE</span>}
+
+        {badge && <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">{badge}</span>}
+
+        <img src={image} alt={name} className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" />
+
+        <span className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
+          <Heart size={20} className="text-gray-500" />
+        </span>
+      </div>
+
+      <div className="p-4 flex flex-col flex-grow">
+        <span className="text-gray-500 text-sm font-medium mb-1">{brand}</span>
+        <h3 className="text-gray-800 font-semibold mb-2 text-lg line-clamp-2">{name}</h3>
+
+        <div className="mt-auto">
+          <div className="flex items-center">
+            {isOnSale ? (
+              <>
+                <span className="text-red-600 font-bold mr-2">{salePrice}</span>
+                <span className="text-gray-500 text-sm line-through">{price}</span>
+              </>
+            ) : (
+              <span className="text-gray-800 font-bold">{price}</span>
+            )}
+          </div>
+
+          <button className="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition-colors duration-200">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;
