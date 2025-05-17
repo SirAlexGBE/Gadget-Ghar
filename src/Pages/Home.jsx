@@ -22,7 +22,6 @@ export default function Home() {
         <FeaturedProducts />
         <ServiceFeatures />
         <NewProducts />
-
         <Banner />
         <BSProducts />
         <Brands />
