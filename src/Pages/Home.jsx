@@ -15,7 +15,7 @@ import LimitedProducts from "../Components/Home/Limited";
 export default function Home() {
   return (
     <>
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 px-3 pb-3">
         <Hero />
         <SaleProducts />
         <Catagories />
