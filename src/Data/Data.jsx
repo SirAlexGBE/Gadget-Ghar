@@ -11,7 +11,7 @@ export const products = [
     salePrice: "NRS 139,999",
     description:
       "6.1-inch Super Retina XDR OLED (2556x1179), A18 Bionic chip, 48MP main + 12MP ultra-wide + 12MP telephoto cameras, 6GB RAM, 256GB storage, Ceramic Shield, IP68 rating, 5G, 3200mAh battery.",
-    image: "https://m.media-amazon.com/images/I/71T5n3W6EEL._SL1500_.jpg",
+    image: "https://cdn.gadgetbytenepal.com/wp-content/uploads/2024/09/iPhone-16-Ultramarine.jpg",
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const products = [
     isOnSale: true,
     salePrice: "NRS 99,999",
     description: "49mm titanium case, S9 SiP, Retina LTPO OLED (2000 nits), GPS + Cellular, blood oxygen sensor, ECG, 100m water resistance, 36-hour battery, Action Button.",
-    image: "https://m.media-amazon.com/images/I/81gKLn3z3lL._SL1500_.jpg",
+    image: "https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/111832-watch-ultra-2.png",
   },
   {
     id: 4,
@@ -80,25 +80,26 @@ export const products = [
     id: 7,
     brand: "Samsung",
     category: "Laptop",
-    name: "Galaxy Book3 Ultra",
+    name: "Galaxy Book 3 Ultra",
     badge: "",
     price: "NRS 299,999",
     isOnSale: false,
     salePrice: null,
     description: "16-inch AMOLED (2880x1800), Intel i7-13700H, NVIDIA RTX 4050, 16GB RAM, 1TB SSD, 76Wh battery, Thunderbolt 4, fingerprint reader.",
-    image: "https://m.media-amazon.com/images/I/81vxWqjJqkL._SL1500_.jpg",
+    image:
+      "https://yantranepal.com/wp-content/uploads/2024/02/Samsung-Galaxy-Book3-Ultra-Intel-Core-i7-13700H-Processor-16GB-Ram-1TB-SSD-1622-3.0K-AMOLED-Display-GeForce-RTX-4050-Graphics-6GB-1.79Kg-Graphite-4.webp",
   },
   {
     id: 8,
     brand: "Samsung",
     category: "Smartwatch",
-    name: "Galaxy Watch6 Classic",
+    name: "Galaxy Watch 6 Classic",
     badge: "FEATURED",
     price: "NRS 54,999",
     isOnSale: false,
     salePrice: null,
     description: "47mm stainless steel, Exynos W930, 1.5-inch Super AMOLED (480x480), LTE, blood pressure monitor, ECG, 5ATM water resistance, rotating bezel.",
-    image: "https://m.media-amazon.com/images/I/61eyfS5vxLL._SL1500_.jpg",
+    image: "https://www.samsungplaza.com.np/public/files/B7CA0B455C808B9-R960_Black.png",
   },
   {
     id: 9,
@@ -110,7 +111,7 @@ export const products = [
     isOnSale: true,
     salePrice: "NRS 129,999",
     description: "14.6-inch Dynamic AMOLED (2960x1848), Snapdragon 8 Gen 2, 12GB RAM, 512GB storage, S Pen included, 11200mAh battery, IP68 rating.",
-    image: "https://m.media-amazon.com/images/I/71v1l+34KPL._SL1500_.jpg",
+    image: "https://images-cdn.ubuy.com.ly/6704b3621264740d3139a1bb-samsung-galaxy-tab-s9-ultra-wifi-5g.jpg",
   },
   {
     id: 10,
@@ -122,7 +123,7 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "Active Noise Cancellation, 24-bit Hi-Fi sound, IPX7 water resistance, 5-hour playback, 360 Audio, wireless charging case.",
-    image: "https://m.media-amazon.com/images/I/61XDeaOrAAL._SL1500_.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBo0TxXV7gG-b66FMMGE-1osM0m9CQ8TnlXQ&s",
   },
 
   // Xiaomi Products
@@ -136,7 +137,7 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "6.73-inch AMOLED (3200x1440, 120Hz), Snapdragon 8 Gen 2, 1-inch 50MP Sony IMX989 camera, 12GB RAM, 256GB storage, 4820mAh battery, 120W HyperCharge.",
-    image: "https://m.media-amazon.com/images/I/71u9zG6gMAL._SL1500_.jpg",
+    image: "https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-13-pro/m/46f40b1ac9e4e9c3228dc89ee3d12c0e.jpg",
   },
   {
     id: 12,
@@ -148,7 +149,7 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "15.6-inch 3.2K IPS (3200x2000, 90Hz), Intel i5-12450H, NVIDIA MX550 GPU, 16GB RAM, 512GB SSD, 72Wh battery, Thunderbolt 4.",
-    image: "https://m.media-amazon.com/images/I/71xT2+0JQDL._SL1500_.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRed8C9qEZ5qtXlOycXtDSWXhJIln-XpqamrA&s",
   },
   {
     id: 13,
@@ -160,7 +161,7 @@ export const products = [
     isOnSale: true,
     salePrice: "NRS 16,999",
     description: "1.43-inch AMOLED (466x466), GPS, 150+ sports modes, 12-day battery, SpO2 monitor, 5ATM water resistance, Bluetooth calling.",
-    image: "https://m.media-amazon.com/images/I/61Qh4r6oMZL._SL1500_.jpg",
+    image: "https://i0.wp.com/directdealz.lk/wp-content/uploads/2024/05/Xiaomi-Watch-S3-Smart-Watch-29-Copy.png",
   },
   {
     id: 14,
@@ -172,7 +173,7 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "11-inch WQHD+ (2880x1800, 144Hz), Snapdragon 8+ Gen 1, 8GB RAM, 256GB storage, 8600mAh battery, 67W fast charging, Dolby Atmos quad speakers.",
-    image: "https://m.media-amazon.com/images/I/71BdGjDcEEL._SL1500_.jpg",
+    image: "https://i.ebayimg.com/images/g/VjoAAOSwBQtkV64d/s-l400.jpg",
   },
   {
     id: 15,
@@ -184,6 +185,6 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "Active Noise Cancellation, 10mm drivers, 36dB noise reduction, 9-hour playback, wireless charging, IPX4 rating, Bluetooth 5.3.",
-    image: "https://m.media-amazon.com/images/I/61H+Z0M1dCL._SL1500_.jpg",
+    image: "https://www.xiaomihomekenya.co.ke/cdn/shop/files/item_4454687_203-800x800.jpg?v=1725460663",
   },
 ];
