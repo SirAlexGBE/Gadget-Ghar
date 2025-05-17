@@ -12,6 +12,8 @@ export const products = [
     description:
       "6.1-inch Super Retina XDR OLED (2556x1179), A18 Bionic chip, 48MP main + 12MP ultra-wide + 12MP telephoto cameras, 6GB RAM, 256GB storage, Ceramic Shield, IP68 rating, 5G, 3200mAh battery.",
     image: "https://cdn.gadgetbytenepal.com/wp-content/uploads/2024/09/iPhone-16-Ultramarine.jpg",
+    image1: "https://istore.ph/cdn/shop/files/iPhone_16_Black_PDP_Image_Position_1a_Black_Color__ROSA-EN.jpg?v=1728445212",
+    image2: "https://cdn.mos.cms.futurecdn.net/gqRrsDk9mgZDHBxrwQwN43-1200-80.png",
   },
   {
     id: 2,
@@ -24,7 +26,8 @@ export const products = [
     salePrice: null,
     description:
       "16.2-inch Liquid Retina XDR (3456x2234), M3 Pro chip (12-core CPU/18-core GPU), 18GB RAM, 1TB SSD, 22-hour battery, Six-speaker system, Thunderbolt 4 ports, Magic Keyboard with Touch ID.",
-    image: "https://m.media-amazon.com/images/I/61vFO3R5UNL._SL1500_.jpg",
+    image: "https://hukut.com/_next/image?url=https%3A%2F%2Fcdn.hukut.com%2FApple-MacBook-Pro-16-inch-m3.png1724244983782&w=3840&q=75",
+    image1: "https://cdn.gadgetbytenepal.com/wp-content/uploads/2023/10/Apple-Macbook-Pro-16-M3-Price-in-Nepal-Availability.jpg",
   },
   {
     id: 3,
@@ -36,7 +39,9 @@ export const products = [
     isOnSale: true,
     salePrice: "NRS 99,999",
     description: "49mm titanium case, S9 SiP, Retina LTPO OLED (2000 nits), GPS + Cellular, blood oxygen sensor, ECG, 100m water resistance, 36-hour battery, Action Button.",
-    image: "https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/111832-watch-ultra-2.png",
+    image:
+      "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXN13ref_VW_34FR+watch-case-49-titanium-natural-ultra2_VW_34FR+watch-face-49-alpine-ultra2_VW_34FR?wid=5120&hei=3280&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=MVk3KzJXanByNFpLUk44NDNqU0VTM2pDV2hhem5qNnpDenFtKzI1OXdzYkpncG05NXptdno5VmVNOFY1RGFaTE96dTRSSXdkWit3NnU2Q1orZWxLbVNCYWZ0M2xobjlJWjF6VEVYcVFORGQxMElNdmlqOUo3NFdlSG12b28wYWJSd2NzWllSMVowSzNFMjFhV0RNcWhKUDhoaDQvQk1qdG9oYWwxVDBSWE5ueFBYN1QxYzVKQXZvbXpRaU9oa2xkSndoMjNQaXpaYS9oa3VMMEdpclFocEsyaFRNMWxETjRNSCtjT2c2cTFmRQ",
+    image1: "https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/111832-watch-ultra-2.png",
   },
   {
     id: 4,
@@ -48,6 +53,7 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "12.9-inch Liquid Retina XDR (2732x2048), M2 chip, 12MP front/10MP rear cameras, Face ID, Thunderbolt port, 1TB storage, 10-hour battery, Apple Pencil compatibility.",
+    image1: "https://i.ytimg.com/vi/EO73QXVqu_M/maxresdefault.jpg",
     image: "https://m.media-amazon.com/images/I/81c+9BOQNWL._SL1500_.jpg",
   },
   {
@@ -61,6 +67,7 @@ export const products = [
     salePrice: null,
     description: "Active Noise Cancellation, Adaptive Audio, H2 chip, MagSafe charging case, IPX4 sweat resistance, 6-hour playback, spatial audio with dynamic head tracking.",
     image: "https://m.media-amazon.com/images/I/61SUj2aKoEL._SL1500_.jpg",
+    image1: "https://static-01.daraz.com.np/p/0e55772b8c1f37d0d1b0e5fef23fc144.jpg",
   },
 
   // Samsung Products
@@ -74,7 +81,8 @@ export const products = [
     isOnSale: true,
     salePrice: "NRS 149,999",
     description: "6.8-inch Dynamic AMOLED 2X (1440x3088), Snapdragon 8 Gen 3, 200MP quad cameras, 12GB RAM, 256GB storage, S Pen, 5000mAh battery, Gorilla Glass Victus 3.",
-    image: "https://m.media-amazon.com/images/I/61VfL-aiToL._SL1500_.jpg",
+    image: "https://www.samsungplaza.com.np/public/files/D1BAF266D335CBD-SM-S928_Violet.png",
+    image1: "https://www.dxomark.com/wp-content/uploads/medias/post-165263/Samsung-Galaxy-S24-Ultra_A_featured-image-packshot-review.jpg",
   },
   {
     id: 7,
@@ -88,6 +96,7 @@ export const products = [
     description: "16-inch AMOLED (2880x1800), Intel i7-13700H, NVIDIA RTX 4050, 16GB RAM, 1TB SSD, 76Wh battery, Thunderbolt 4, fingerprint reader.",
     image:
       "https://yantranepal.com/wp-content/uploads/2024/02/Samsung-Galaxy-Book3-Ultra-Intel-Core-i7-13700H-Processor-16GB-Ram-1TB-SSD-1622-3.0K-AMOLED-Display-GeForce-RTX-4050-Graphics-6GB-1.79Kg-Graphite-4.webp",
+    image1: "https://phonesstorekenya.com/wp-content/uploads/2023/02/samsung-galaxy-book3-ultra-acutalite-actu-hardware-overclocking.jpg",
   },
   {
     id: 8,
@@ -99,7 +108,7 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "47mm stainless steel, Exynos W930, 1.5-inch Super AMOLED (480x480), LTE, blood pressure monitor, ECG, 5ATM water resistance, rotating bezel.",
-    image: "https://www.samsungplaza.com.np/public/files/B7CA0B455C808B9-R960_Black.png",
+    image1: "https://www.samsungplaza.com.np/public/files/B7CA0B455C808B9-R960_Black.png",
   },
   {
     id: 9,
@@ -112,6 +121,7 @@ export const products = [
     salePrice: "NRS 129,999",
     description: "14.6-inch Dynamic AMOLED (2960x1848), Snapdragon 8 Gen 2, 12GB RAM, 512GB storage, S Pen included, 11200mAh battery, IP68 rating.",
     image: "https://images-cdn.ubuy.com.ly/6704b3621264740d3139a1bb-samsung-galaxy-tab-s9-ultra-wifi-5g.jpg",
+    image1: "https://cdn.gadgetbytenepal.com/wp-content/uploads/2023/07/Samsung-Galaxy-Tab-S9-Series-Price-in-Nepal.jpg",
   },
   {
     id: 10,
@@ -123,7 +133,8 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "Active Noise Cancellation, 24-bit Hi-Fi sound, IPX7 water resistance, 5-hour playback, 360 Audio, wireless charging case.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBo0TxXV7gG-b66FMMGE-1osM0m9CQ8TnlXQ&s",
+    image: "https://cdn.gadgetbytenepal.com/wp-content/uploads/2023/05/Samsung-Galaxy-Buds-2-Pro-Bora-Purple.jpg",
+    image1: "https://m.media-amazon.com/images/I/61ReFn+YL1L._AC_SL1500_.jpg",
   },
 
   // Xiaomi Products
@@ -138,6 +149,7 @@ export const products = [
     salePrice: null,
     description: "6.73-inch AMOLED (3200x1440, 120Hz), Snapdragon 8 Gen 2, 1-inch 50MP Sony IMX989 camera, 12GB RAM, 256GB storage, 4820mAh battery, 120W HyperCharge.",
     image: "https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-13-pro/m/46f40b1ac9e4e9c3228dc89ee3d12c0e.jpg",
+    image1: "https://pokharamobilestore.com/wp-content/uploads/2023/04/Xiaomi-13-Pro-White-1.jpg",
   },
   {
     id: 12,
@@ -149,7 +161,8 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "15.6-inch 3.2K IPS (3200x2000, 90Hz), Intel i5-12450H, NVIDIA MX550 GPU, 16GB RAM, 512GB SSD, 72Wh battery, Thunderbolt 4.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRed8C9qEZ5qtXlOycXtDSWXhJIln-XpqamrA&s",
+    image: "https://fatafatsewa.com/storage/media/7161/Xiaomi-Mi-RedmiBook-Pro-15.jpg",
+    image1: "https://smartdoko.com/storage/products/resized/1663304652_3840.jpg",
   },
   {
     id: 13,
@@ -162,6 +175,7 @@ export const products = [
     salePrice: "NRS 16,999",
     description: "1.43-inch AMOLED (466x466), GPS, 150+ sports modes, 12-day battery, SpO2 monitor, 5ATM water resistance, Bluetooth calling.",
     image: "https://i0.wp.com/directdealz.lk/wp-content/uploads/2024/05/Xiaomi-Watch-S3-Smart-Watch-29-Copy.png",
+    image1: "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-watch-s3/M/4098fa13ea082bb2b3bdc539f5b72dac.jpg",
   },
   {
     id: 14,
@@ -173,7 +187,8 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "11-inch WQHD+ (2880x1800, 144Hz), Snapdragon 8+ Gen 1, 8GB RAM, 256GB storage, 8600mAh battery, 67W fast charging, Dolby Atmos quad speakers.",
-    image: "https://i.ebayimg.com/images/g/VjoAAOSwBQtkV64d/s-l400.jpg",
+    image1: "https://i.ebayimg.com/images/g/VjoAAOSwBQtkV64d/s-l400.jpg",
+    image: "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-pad-6/m/cda4f9fec80ca96adc485cde11a9ca3e.jpg",
   },
   {
     id: 15,
@@ -185,6 +200,7 @@ export const products = [
     isOnSale: false,
     salePrice: null,
     description: "Active Noise Cancellation, 10mm drivers, 36dB noise reduction, 9-hour playback, wireless charging, IPX4 rating, Bluetooth 5.3.",
-    image: "https://www.xiaomihomekenya.co.ke/cdn/shop/files/item_4454687_203-800x800.jpg?v=1725460663",
+    image: "https://i02.appmifile.com/833_operatorx_operatorx_xm/25/08/2022/04ad5d38d4637330c1ed6b7e6b918575.png",
+    image1: "https://www.xiaomihomekenya.co.ke/cdn/shop/files/item_4454687_203-800x800.jpg?v=1725460663",
   },
 ];
