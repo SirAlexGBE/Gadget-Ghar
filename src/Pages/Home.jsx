@@ -9,7 +9,7 @@ import Review from "../Components/Home/Review";
 import SaleProducts from "../Components/Home/SalesProducts";
 import NewProducts from "../Components/Home/NewProducts";
 import FeaturedProducts from "../Components/Home/FeaturedProducts";
-import BSProducts from "../Components/Home/bestSellar";
+import BSProducts from "../Components/Home/BestSellar";
 import LimitedProducts from "../Components/Home/Limited";
 
 export default function Home() {
