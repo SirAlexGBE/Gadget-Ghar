@@ -8,6 +8,7 @@ import Cart from "./Pages/Cart";
 import Footer from "./Components/Home/Footer";
 import Policy from "./Pages/Policy";
 import Catagories from "./Pages/Catagory";
+import PagenotFound from "./Pages/PagenotFound";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/policy" element={<Policy />} />
+        <Route path="*" element={<PagenotFound />} />
       </Routes>
       <Footer />
     </>
