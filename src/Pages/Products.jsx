@@ -3,7 +3,7 @@ import {products} from "../Data/Data";
 import ProductCard from "../Components/ProductCard";
 import {useSearchParams} from "react-router-dom";
 import {Player} from "@lottiefiles/react-lottie-player"; //
-import productNotFound from "../Animation/Product not Found.json";
+import productNotFound from "../Animation/Product not found.json";
 
 export default function Products() {
   const [searchParams] = useSearchParams();
