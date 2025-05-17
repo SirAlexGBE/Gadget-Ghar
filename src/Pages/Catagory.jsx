@@ -2,7 +2,7 @@ import Accessories from "../assets/Cata-accessories.png";
 import Phone from "../assets/Cata-phone.png";
 import Camera from "../assets/Cata-camera.png";
 import Laptop from "../assets/Cata-laptop.png";
-import Gaming from "../assets/Cata-Gaming.png";
+import Gaming from "../assets/Cata-gaming.png";
 import Watch from "../assets/Cata-watches.png";
 import headphone from "../assets/Cata-headphones.png";
 import Tablet from "../assets/Cata-Tab.png";
