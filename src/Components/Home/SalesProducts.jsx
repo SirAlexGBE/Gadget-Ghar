@@ -18,7 +18,10 @@ const SaleProducts = () => {
         ))}
       </div>
       <div className="flex justify-end mt-4">
-        <Link to="/products/sales" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md shadow transition-colors duration-200">
+        <Link
+          to="/products?name=sales"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md shadow transition-colors duration-200"
+        >
           Explore More
         </Link>
       </div>

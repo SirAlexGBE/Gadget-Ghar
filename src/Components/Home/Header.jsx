@@ -1,8 +1,19 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Search, MapPin, Truck, User, Heart, ShoppingCart} from "lucide-react";
 import ProductDropdown from "./ProductDropdown";
+import {useState} from "react";
 
 function Header() {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (search.trim()) {
+      navigate(`/products?name=${encodeURIComponent(search)}`);
+    }
+  };
+
   return (
     <>
       <div className="bg-white text-neutral-700 py-2 px-4 text-sm">
@@ -27,18 +38,30 @@ function Header() {
         <div className="bg-blue-950 text-white py-4 px-7">
           <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Logo */}
-            <Link to="/" className="text-2xl font-bold">
-              GadgetGhar
+            <Link to="/" className="flex items-center">
+              <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-lg mr-2">
+                <span className="text-2xl font-bold text-white">GG</span>
+              </div>
+              <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">GADGET GHAR</div>
             </Link>
 
             {/* Search Bar */}
             <div className="w-full md:flex-1 max-w-xl">
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Search className="size-5 text-neutral-500" />
+              <form onSubmit={handleSearchSubmit}>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <Search className="size-5 text-neutral-500" />
+                  </div>
+
+                  <input
+                    type="search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full p-2.5 pl-10 text-sm text-neutral-900 border border-neutral-300 rounded-lg bg-white"
+                    placeholder="Apple Watch, Samsung S21, Macbook Pro, ..."
+                  />
                 </div>
-                <input type="search" className="w-full p-2.5 pl-10 text-sm text-neutral-900 border border-neutral-300 rounded-lg bg-white" placeholder="Apple Watch, Samsung S21, Macbook Pro, ..." />
-              </div>
+              </form>
             </div>
 
             {/* User Icons */}

@@ -1,6 +1,6 @@
 import {useState, useRef, useEffect} from "react";
 import {Link} from "react-router-dom";
-import {ChevronDown, Smartphone, Monitor, Tablet, Watch, Headphones, Camera, Gamepad2, Settings, Boxes} from "lucide-react";
+import {ChevronDown, Smartphone, Speaker, Monitor, Tablet, Watch, Headphones, Camera, Gamepad2, Settings, Boxes} from "lucide-react";
 
 export default function ProductDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,14 +28,15 @@ export default function ProductDropdown() {
 
   const categories = [
     {name: "All Catagories", icon: Boxes, path: "/catagories"},
-    {name: "Mobile Phones", icon: Smartphone, path: "/products/smartphones"},
-    {name: "Laptops & Computers", icon: Monitor, path: "/products/laptops"},
-    {name: "Tablets & E-reader", icon: Tablet, path: "/products/tablets"},
-    {name: "Wearables", icon: Watch, path: "/products/wearables"},
-    {name: "Audio", icon: Headphones, path: "/products/audio"},
-    {name: "Cameras", icon: Camera, path: "/products/cameras"},
-    {name: "Gaming", icon: Gamepad2, path: "/products/gaming"},
-    {name: "Accessories", icon: Settings, path: "/products/accessories"},
+    {name: "Mobile Phones", icon: Smartphone, path: "/products/?name=smartphone"},
+    {name: "Laptops & Computers", icon: Monitor, path: "/products/?name=laptop"},
+    {name: "Tablets & E-reader", icon: Tablet, path: "/products/?name=tablet"},
+    {name: "Wearables", icon: Watch, path: "/products/?name=smartwatch"},
+    {name: "Earbuds", icon: Headphones, path: "/products/?name=earbuds"},
+    {name: "Audio", icon: Speaker, path: "/products/?name=audio"},
+    {name: "Cameras", icon: Camera, path: "/products/?name=cameras"},
+    {name: "Gaming", icon: Gamepad2, path: "/products/?name=gaming"},
+    {name: "Accessories", icon: Settings, path: "/products/?name=accessories"},
   ];
 
   return (
