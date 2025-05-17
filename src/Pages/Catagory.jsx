@@ -5,7 +5,7 @@ import Laptop from "../assets/Cata-laptop.png";
 import Gaming from "../assets/Cata-gaming.png";
 import Watch from "../assets/Cata-watches.png";
 import headphone from "../assets/Cata-headphones.png";
-import Tablet from "../assets/Cata-Tab.png";
+import Tablet from "../assets/Cata-tab.png";
 import {Link} from "react-router-dom";
 
 export default function Catagories() {
