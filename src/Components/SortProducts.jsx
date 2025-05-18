@@ -10,7 +10,6 @@ const sortOptions = [
 ];
 
 function parsePrice(price) {
-  // Remove non-numeric characters and parse as number
   return Number(price.replace(/[^0-9.]/g, ""));
 }
 

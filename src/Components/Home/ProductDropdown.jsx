@@ -35,6 +35,7 @@ export default function ProductDropdown() {
     {name: "Earbuds", icon: Headphones, path: "/products/?name=earbuds"},
     {name: "Audio", icon: Speaker, path: "/products/?name=audio"},
     {name: "Cameras", icon: Camera, path: "/products/?name=cameras"},
+    {name: "Monitors", icon: Monitor, path: "/products/?name=monitor"}, // <-- Added this line
     {name: "Gaming", icon: Gamepad2, path: "/products/?name=gaming"},
     {name: "Accessories", icon: Settings, path: "/products/?name=accessories"},
   ];
