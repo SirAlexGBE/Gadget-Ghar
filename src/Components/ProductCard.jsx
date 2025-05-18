@@ -1,13 +1,13 @@
-import {Heart} from "lucide-react";
+import { Heart, Star } from "lucide-react";
 
-const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge}) => {
+const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge, rating}) => {
   return (
     <div className="group flex flex-col rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white max-w-xs">
       {/* Product Image Container */}
       <div className="relative overflow-hidden">
         {isOnSale && <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">SALE</span>}
 
-        {badge && <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">{badge}</span>}
+        {badge && !isOnSale && <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">{badge}</span>}
 
         <img src={image} alt={name} className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" />
 
@@ -18,7 +18,19 @@ const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge}) =>
 
       <div className="p-4 flex flex-col flex-grow">
         <span className="text-gray-500 text-sm font-medium mb-1">{brand}</span>
-        <h3 className="text-gray-800 font-semibold mb-2 text-lg line-clamp-2">{name}</h3>
+        <h3 className="text-gray-800 font-semibold mb-1 text-lg line-clamp-2">{name}</h3>
+
+        {/* Rating Stars */}
+        <div className="flex items-center mb-2">
+          {[...Array(5)].map((_, i) => (
+            <Star
+              key={i}
+              fill={i < Math.floor(rating) ? "#f59e42" : "none"}
+              className={`size-5 ${i < Math.floor(rating) ? "text-amber-400" : "text-gray-300"}`}
+            />
+          ))}
+          <span className="ml-2 text-xs text-gray-600">{rating}</span>
+        </div>
 
         <div className="mt-auto">
           <div className="flex items-center">

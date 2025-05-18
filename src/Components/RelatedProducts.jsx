@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {products} from "../Data/Data";
+import ProductCard from "./ProductCard"; // Import your ProductCard
 
 export default function RelatedProducts({product}) {
   return (
@@ -12,13 +13,16 @@ export default function RelatedProducts({product}) {
           .slice(0, 5)
           .map((relatedProduct) => (
             <Link to={`/productdetails?id=${relatedProduct.id}`} key={relatedProduct.id} className="block">
-              <div className="bg-white shadow-md rounded-lg overflow-hidden">
-                <img src={relatedProduct.image1} alt={relatedProduct.name} className="w-full h-48 object-cover" />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold">{relatedProduct.name}</h3>
-                  <p className="text-gray-600">{relatedProduct.price}</p>
-                </div>
-              </div>
+              <ProductCard
+                image={relatedProduct.image}
+                name={relatedProduct.name}
+                brand={relatedProduct.brand}
+                price={relatedProduct.price}
+                isOnSale={relatedProduct.isOnSale}
+                salePrice={relatedProduct.salePrice}
+                badge={relatedProduct.badge}
+                rating={relatedProduct.rating}
+              />
             </Link>
           ))}
       </div>

@@ -34,6 +34,7 @@ export default function Products() {
               isOnSale={product.isOnSale}
               salePrice={product.salePrice}
               badge={product.badge}
+              rating={product.rating}
             />
           </Link>
         ))
