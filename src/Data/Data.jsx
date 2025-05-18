@@ -160,8 +160,8 @@ export const products = [
     salePrice: null,
     rating: 4.5,
     description: "6.73-inch AMOLED (3200x1440, 120Hz), Snapdragon 8 Gen 2, 1-inch 50MP Sony IMX989 camera, 12GB RAM, 256GB storage, 4820mAh battery, 120W HyperCharge.",
-    image: "https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-13-pro/m/46f40b1ac9e4e9c3228dc89ee3d12c0e.jpg",
-    image1: "https://pokharamobilestore.com/wp-content/uploads/2023/04/Xiaomi-13-Pro-White-1.jpg",
+    image1: "https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-13-pro/m/46f40b1ac9e4e9c3228dc89ee3d12c0e.jpg",
+    image: "https://pokharamobilestore.com/wp-content/uploads/2023/04/Xiaomi-13-Pro-White-1.jpg",
   },
   {
     id: 12,
