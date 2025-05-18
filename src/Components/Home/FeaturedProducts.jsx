@@ -6,7 +6,7 @@ import {Star} from "lucide-react";
 
 const FeaturedProducts = () => {
   // Filter featured products and take up to 5
-  const featuredProducts = products.filter((p) => p.badge === "FEATURED").slice(0, 5);
+  const featuredProducts = products.filter((p) => p.badge === "FEATURED").slice(0, 4);
 
   return (
     <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 p-6 shadow-lg">
@@ -22,10 +22,10 @@ const FeaturedProducts = () => {
       </div>
 
       {/* Products grid with improved spacing */}
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
         {featuredProducts.map((product) => (
-          <Link to={`/productdetails?id=${product.id}`} key={product.id} className="group transform transition-all duration-300 hover:scale-105">
-            <div className="flex-1 min-w-[220px] max-w-xs overflow-hidden rounded-xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-xl">
+          <Link to={`/productdetails?id=${product.id}`} key={product.id} className="group transform transition-all duration-300 hover:scale-105 w-full max-w-xs">
+            <div className="overflow-hidden rounded-xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-xl">
               <ProductCard {...product} />
             </div>
           </Link>

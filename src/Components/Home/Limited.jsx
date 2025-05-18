@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {Clock} from "lucide-react";
 
 const LimitedProducts = () => {
-  const limitedProducts = products.filter((p) => p.badge === "LIMITED").slice(0, 5);
+  const limitedProducts = products.filter((p) => p.badge === "LIMITED").slice(0, 4);
 
   return (
     <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-rose-50 to-red-50 p-6 shadow-lg">
@@ -19,7 +19,7 @@ const LimitedProducts = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
         {limitedProducts.map((product) => (
           <Link to={`/productdetails?id=${product.id}`} key={product.id} className="group transform transition-all duration-300 hover:scale-105">
             <div className="flex-1 min-w-[220px] max-w-xs overflow-hidden rounded-xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-xl">
