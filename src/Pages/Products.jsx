@@ -40,7 +40,7 @@ export default function Products() {
 
       {/* Products Grid */}
       <main className="flex-1">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:grid-cols-3">
           {sortedProducts.length > 0 ? (
             sortedProducts.map((product) => (
               <Link to={`/productdetails?id=${product.id}`} key={product.id} className="block">
