@@ -1,4 +1,4 @@
-import { Heart, Star } from "lucide-react";
+import {Heart, Star} from "lucide-react";
 
 const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge, rating}) => {
   return (
@@ -23,11 +23,7 @@ const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge, rat
         {/* Rating Stars */}
         <div className="flex items-center mb-2">
           {[...Array(5)].map((_, i) => (
-            <Star
-              key={i}
-              fill={i < Math.floor(rating) ? "#f59e42" : "none"}
-              className={`size-5 ${i < Math.floor(rating) ? "text-amber-400" : "text-gray-300"}`}
-            />
+            <Star key={i} fill={i < Math.floor(rating) ? "#f59e42" : "none"} className={`size-5 ${i < Math.floor(rating) ? "text-amber-400" : "text-gray-300"}`} />
           ))}
           <span className="ml-2 text-xs text-gray-600">{rating}</span>
         </div>
