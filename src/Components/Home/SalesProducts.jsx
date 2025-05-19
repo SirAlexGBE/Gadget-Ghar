@@ -23,7 +23,7 @@ const SaleProducts = () => {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {saleProducts.map((product) => (
           <Link to={`/productdetails?id=${product.id}`} key={product.id} className="group transform transition-all duration-300 hover:scale-105">
-            <div className="overflow-hidden rounded-xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-xl">
+            <div className="overflow-hidden flex justify-center rounded-xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-xl">
               <ProductCard {...product} />
             </div>
           </Link>
