@@ -10,11 +10,13 @@ import Policy from "./Pages/Policy";
 import Catagories from "./Pages/Catagory";
 import PagenotFound from "./Pages/PagenotFound";
 import ProductDetails from "./Pages/ProductDetails";
-
+import {ScrollToTop} from "../src/ScrollToTop";
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

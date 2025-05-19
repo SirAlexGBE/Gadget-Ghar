@@ -14,7 +14,7 @@ export default function About() {
         <ServicesSection />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-        <div id="contact">
+        <div id="contact" className="py-6">
           <ContactSection />
         </div>
         <div id="locate">

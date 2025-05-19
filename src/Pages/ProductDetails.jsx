@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useSearchParams, Link} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {useSearchParams, useLocation, Link} from "react-router-dom";
 import {products} from "../Data/Data";
 import {Player} from "@lottiefiles/react-lottie-player";
 import productNotFound from "../Animation/Product not found.json";
@@ -10,6 +10,12 @@ import SalesProducts from "../Components/Home/SalesProducts";
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }, [location.search]);
+
   const product = products.find((product) => String(product.id) === id);
   const [activeImage, setActiveImage] = useState(0);
   const [quantity, setQuantity] = useState(1);

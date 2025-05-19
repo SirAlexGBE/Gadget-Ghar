@@ -99,12 +99,12 @@ export default function Footer() {
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm">
           <p>&copy; {currentYear} Gadget Ghar. All rights reserved.</p>
           <div className="flex space-x-4 mt-2 md:mt-0">
-            <HashLink to="/policy#T&S" className="hover:text-blue-400 transition-colors">
+            <Link to="/policy" className="hover:text-blue-400 transition-colors">
               Terms of Service
-            </HashLink>
-            <HashLink to="/policy#Privacy" className="hover:text-blue-400 transition-colors">
+            </Link>
+            <Link to="/policy" className="hover:text-blue-400 transition-colors">
               Privacy Policy
-            </HashLink>
+            </Link>
           </div>
         </div>
       </div>
