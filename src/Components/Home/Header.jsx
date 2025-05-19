@@ -33,7 +33,7 @@ function Header() {
       </div>
 
       {/* Sticky Main Header and Navigation Bar */}
-      <div className="sticky top-0 z-1000">
+      <div className="sticky top-0 z-50">
         {/* Main Header */}
         <div className="bg-blue-950 text-white py-4 px-7">
           <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">

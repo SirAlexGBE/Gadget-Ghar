@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {ChevronDown, ChevronUp, Search, Filter, RotateCcw} from "lucide-react"; // <-- Import icons
+import {ChevronDown, ChevronUp, Search, Filter, RotateCcw} from "lucide-react";
 
 const FilterProducts = ({products, onFilter}) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -169,16 +169,17 @@ const FilterProducts = ({products, onFilter}) => {
     });
   };
 
+  // Calculate the number of applied filters
+  const activeFilterCount = filters.categories.length + filters.brands.length + (filters.priceRange.min && filters.priceRange.max ? 1 : 0) + filters.ratings.length;
+
   return (
-    <div
-      className="w-72 max-w-[18rem] min-w-[18rem] bg-white shadow-lg rounded-lg p-3 pt-2 text-xs overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-300 scrollbar-track-gray-100"
-      style={{scrollbarWidth: "thin"}}
-    >
-      <div className="mb-4">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      {/* Header with title and reset button - always visible */}
+      <div className="sticky top-0 z-1000 bg-white p-3 border-b border-gray-100">
         <h3 className="text-sm font-medium text-indigo-700 mb-2 flex items-center">
           <Filter className="mr-2 h-4 w-4" />
           <span className="mr-2">Filters</span>
-          <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full px-2 py-0.5">0</span>
+          {activeFilterCount > 0 && <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full px-2 py-0.5">{activeFilterCount}</span>}
           <button onClick={resetFilters} className="ml-auto flex items-center gap-1 text-xs text-indigo-600 hover:text-indigo-800 transition-colors px-2 py-1 rounded" title="Reset Filters">
             <RotateCcw className="h-4 w-4" />
             Reset
@@ -197,113 +198,116 @@ const FilterProducts = ({products, onFilter}) => {
         </div>
       </div>
 
-      {/* Categories */}
-      <div className="mb-4 border-b border-gray-100 pb-4">
-        <button onClick={() => toggleSection("categories")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
-          <span>Categories</span>
-          {expandedSections.categories ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-        </button>
+      {/* Scrollable content area */}
+      <div className="p-3 overflow-y-auto max-h-[calc(100vh-180px)] md:max-h-[calc(100vh-150px)]">
+        {/* Categories */}
+        <div className="mb-4 border-b border-gray-100 pb-4">
+          <button onClick={() => toggleSection("categories")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
+            <span>Categories</span>
+            {expandedSections.categories ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
 
-        {expandedSections.categories && (
-          <div className="space-y-1">
-            {categories.map((category) => (
-              <label key={category.name} className="flex items-center text-sm cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={filters.categories.includes(category.name)}
-                  onChange={() => handleCategoryChange(category.name)}
-                  className="h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
-                />
-                <span className="ml-2 text-gray-700">{category.name}</span>
-                <span className="ml-auto text-xs text-gray-500">{category.count}</span>
-              </label>
-            ))}
-          </div>
-        )}
-      </div>
+          {expandedSections.categories && (
+            <div className="space-y-1">
+              {categories.map((category) => (
+                <label key={category.name} className="flex items-center text-sm cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={filters.categories.includes(category.name)}
+                    onChange={() => handleCategoryChange(category.name)}
+                    className="h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
+                  />
+                  <span className="ml-2 text-gray-700">{category.name}</span>
+                  <span className="ml-auto text-xs text-gray-500">{category.count}</span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
 
-      {/* Brands */}
-      <div className="mb-4 border-b border-gray-100 pb-4">
-        <button onClick={() => toggleSection("brands")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
-          <span>Brands</span>
-          {expandedSections.brands ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-        </button>
+        {/* Brands */}
+        <div className="mb-4 border-b border-gray-100 pb-4">
+          <button onClick={() => toggleSection("brands")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
+            <span>Brands</span>
+            {expandedSections.brands ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
 
-        {expandedSections.brands && (
-          <div className="space-y-1">
-            {brands.map((brand) => (
-              <label key={brand.name} className="flex items-center text-sm cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={filters.brands.includes(brand.name)}
-                  onChange={() => handleBrandChange(brand.name)}
-                  className="h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
-                />
-                <span className="ml-2 text-gray-700">{brand.name}</span>
-                <span className="ml-auto text-xs text-gray-500">{brand.count}</span>
-              </label>
-            ))}
-          </div>
-        )}
-      </div>
+          {expandedSections.brands && (
+            <div className="space-y-1">
+              {brands.map((brand) => (
+                <label key={brand.name} className="flex items-center text-sm cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={filters.brands.includes(brand.name)}
+                    onChange={() => handleBrandChange(brand.name)}
+                    className="h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
+                  />
+                  <span className="ml-2 text-gray-700">{brand.name}</span>
+                  <span className="ml-auto text-xs text-gray-500">{brand.count}</span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
 
-      {/* Price Range */}
-      <div className="mb-4 border-b border-gray-100 pb-4">
-        <button onClick={() => toggleSection("priceRange")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
-          <span>Price Range</span>
-          {expandedSections.priceRange ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-        </button>
+        {/* Price Range */}
+        <div className="mb-4 border-b border-gray-100 pb-4">
+          <button onClick={() => toggleSection("priceRange")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
+            <span>Price Range</span>
+            {expandedSections.priceRange ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
 
-        {expandedSections.priceRange && (
-          <div className="flex items-center space-x-2">
-            <input
-              type="number"
-              placeholder="NRs0"
-              value={filters.priceRange.min}
-              onChange={(e) => handlePriceChange("min", e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
-            />
-            <span className="text-gray-500">to</span>
-            <input
-              type="number"
-              placeholder="NRs100000"
-              value={filters.priceRange.max}
-              onChange={(e) => handlePriceChange("max", e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
-            />
-          </div>
-        )}
-      </div>
+          {expandedSections.priceRange && (
+            <div className="flex items-center space-x-2">
+              <input
+                type="number"
+                placeholder="NRs0"
+                value={filters.priceRange.min}
+                onChange={(e) => handlePriceChange("min", e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              />
+              <span className="text-gray-500">to</span>
+              <input
+                type="number"
+                placeholder="NRs100000"
+                value={filters.priceRange.max}
+                onChange={(e) => handlePriceChange("max", e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              />
+            </div>
+          )}
+        </div>
 
-      {/* Ratings */}
-      <div className="mb-4">
-        <button onClick={() => toggleSection("ratings")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
-          <span>Ratings</span>
-          {expandedSections.ratings ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-        </button>
+        {/* Ratings */}
+        <div className="mb-4">
+          <button onClick={() => toggleSection("ratings")} className="flex items-center justify-between w-full text-sm text-indigo-600 font-medium mb-2">
+            <span>Ratings</span>
+            {expandedSections.ratings ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
 
-        {expandedSections.ratings && (
-          <div className="space-y-1">
-            {ratingOptions.map((option) => (
-              <label key={option.value} className="flex items-center text-sm cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={filters.ratings.includes(option.value)}
-                  onChange={() => handleRatingChange(option.value)}
-                  className="h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
-                />
-                <span className="ml-2 text-gray-700 flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className={i < option.value ? "text-yellow-400" : "text-gray-300"}>
-                      ★
-                    </span>
-                  ))}
-                  <span className="ml-1">{option.label}</span>
-                </span>
-              </label>
-            ))}
-          </div>
-        )}
+          {expandedSections.ratings && (
+            <div className="space-y-1">
+              {ratingOptions.map((option) => (
+                <label key={option.value} className="flex items-center text-sm cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={filters.ratings.includes(option.value)}
+                    onChange={() => handleRatingChange(option.value)}
+                    className="h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
+                  />
+                  <span className="ml-2 text-gray-700 flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className={i < option.value ? "text-yellow-400" : "text-gray-300"}>
+                        ★
+                      </span>
+                    ))}
+                    <span className="ml-1">{option.label}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

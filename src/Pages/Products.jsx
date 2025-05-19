@@ -5,6 +5,7 @@ import {useSearchParams, Link} from "react-router-dom";
 import {Player} from "@lottiefiles/react-lottie-player";
 import productNotFound from "../Animation/Product not found.json";
 import FilterProducts from "../Components/FilterProducts";
+import {ChevronDown, Filter, X} from "lucide-react";
 
 export default function Products() {
   const [searchParams] = useSearchParams();
@@ -32,6 +33,9 @@ export default function Products() {
   // Sorting state
   const [sortOption, setSortOption] = useState("default");
 
+  // Mobile filter drawer state
+  const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
+
   // Update filteredProducts when URL query changes
   useEffect(() => {
     setFilteredProducts(initialFilteredProducts);
@@ -42,6 +46,10 @@ export default function Products() {
   const handleFilter = (filteredResults) => {
     setFilteredProducts(filteredResults);
     setFiltersApplied(true);
+    // Close drawer on mobile after applying filters
+    if (window.innerWidth < 768) {
+      setFilterDrawerOpen(false);
+    }
   };
 
   // Handle sorting
@@ -62,30 +70,72 @@ export default function Products() {
     return sorted;
   };
 
+  // Toggle filter drawer
+  const toggleFilterDrawer = () => {
+    setFilterDrawerOpen(!filterDrawerOpen);
+  };
+
   // Count the number of products
   const productCount = filteredProducts.length;
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-[120vh] pb-12">
-      <div className="relative max-w-7xl mx-auto px-4">
-        {/* Sidebar */}
-        <aside className="absolute left-0 top-0 h-full w-72 min-w-[18rem] max-w-[18rem] z-20">
+    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen pb-12">
+      <div className="max-w-7xl mx-auto px-4 relative ">
+        {/* Mobile Filter Button */}
+        <div className="md:hidden sticky top-0 z-30 bg-gradient-to-r from-indigo-500 to-purple-600 p-4 rounded-b-lg shadow-md flex justify-between items-center">
+          <h2 className="text-white font-semibold text-lg">
+            {productCount} {productCount === 1 ? "product" : "products"}
+          </h2>
+          <button onClick={toggleFilterDrawer} className="flex items-center gap-1 bg-white/90 text-indigo-800 px-3 py-1.5 rounded-md shadow-sm">
+            <Filter size={16} />
+            <span>Filters</span>
+          </button>
+        </div>
+
+        {/* Mobile Filter Drawer */}
+        <div
+          className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 md:hidden ${filterDrawerOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          onClick={toggleFilterDrawer}
+        ></div>
+        <div
+          className={`fixed inset-y-0 right-0 z-50 w-4/5 max-w-xs bg-white shadow-xl transform transition-transform duration-300 ease-in-out md:hidden ${
+            filterDrawerOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex justify-between items-center border-b border-gray-200 p-4">
+            <h3 className="font-bold text-lg text-gray-800">Filters</h3>
+            <button onClick={toggleFilterDrawer} className="text-gray-500 hover:text-gray-700">
+              <X size={24} />
+            </button>
+          </div>
+          <div className="p-4 overflow-y-auto h-full pb-24">
+            {filterDrawerOpen && (
+              <div className="h-full overflow-y-auto">
+                <FilterProducts products={initialFilteredProducts} onFilter={handleFilter} />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Desktop Sidebar */}
+        <aside className="hidden md:block md:float-left md:w-72 md:pr-8 md:sticky md:top-4 md:h-screen md:pb-20">
           <FilterProducts products={initialFilteredProducts} onFilter={handleFilter} />
         </aside>
+
         {/* Main Content */}
-        <div className="pl-72">
+        <div className="md:ml-72">
           {/* Hero Section with Product Count and Sorting */}
-          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-lg p-6 mb-8 mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-lg p-4 md:p-6 mb-6 mt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-white text-3xl font-bold mb-2">{query ? `Search Results: "${query}"` : "All Products"}</h1>
-              <p className="text-indigo-100 text-lg">
+              <h1 className="text-white text-xl md:text-3xl font-bold mb-1 md:mb-2">{query ? `Search Results: "${query}"` : "All Products"}</h1>
+              <p className="text-indigo-100 text-sm md:text-lg">
                 {productCount} {productCount === 1 ? "product" : "products"} found
                 {filtersApplied ? " with applied filters" : ""}
               </p>
             </div>
             {/* Sorting Dropdown */}
-            <div className="flex items-center gap-3">
-              <label htmlFor="sort" className="text-white text-sm font-medium">
+            <div className="flex items-center gap-2">
+              <label htmlFor="sort" className="text-white text-xs md:text-sm font-medium whitespace-nowrap">
                 Sort by:
               </label>
               <div className="relative">
@@ -93,7 +143,7 @@ export default function Products() {
                   id="sort"
                   value={sortOption}
                   onChange={handleSortChange}
-                  className="appearance-none bg-white/90 backdrop-blur-sm rounded-md px-3 py-1.5 pr-8 text-sm font-medium text-indigo-800 border border-purple-200 shadow-sm hover:border-purple-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                  className="appearance-none bg-white/90 backdrop-blur-sm rounded-md px-2 md:px-3 py-1 md:py-1.5 pr-8 text-xs md:text-sm font-medium text-indigo-800 border border-purple-200 shadow-sm hover:border-purple-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
                 >
                   <option value="default">Default</option>
                   <option value="price-low-high">Price: Low - High</option>
@@ -101,17 +151,16 @@ export default function Products() {
                   <option value="rating">Rating</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-indigo-700">
-                  <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                  </svg>
+                  <ChevronDown size={16} />
                 </div>
               </div>
             </div>
           </div>
+
           {/* Products Grid */}
           <main>
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid justify-items-center grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
                 {getSortedProducts().map((product) => (
                   <Link to={`/productdetails?id=${product.id}`} key={product.id} className="block">
                     <ProductCard
@@ -128,9 +177,9 @@ export default function Products() {
                 ))}
               </div>
             ) : (
-              <div className="flex flex-col items-center py-7">
-                <Player autoplay loop src={productNotFound} style={{height: "300px", width: "300px"}} />
-                <h2 className="text-2xl font-semibold mt-4">No products found {query ? `matching "${query}"` : "with current filters"}</h2>
+              <div className="flex flex-col items-center py-4 md:py-7">
+                <Player autoplay loop src={productNotFound} style={{height: "200px", width: "200px"}} className="md:h-64 md:w-64" />
+                <h2 className="text-xl md:text-2xl font-semibold mt-4 text-center px-4">No products found {query ? `matching "${query}"` : "with current filters"}</h2>
                 {filtersApplied && (
                   <button
                     onClick={() => {

@@ -2,14 +2,14 @@ import {Heart, Star} from "lucide-react";
 
 const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge, rating}) => {
   return (
-    <div className="group flex flex-col rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white max-w-xs">
+    <div className="group flex flex-col w-58 h-80 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white max-w-xs">
       {/* Product Image Container */}
-      <div className="relative overflow-hidden">
+      <div className="relative  overflow-hidden">
         {isOnSale && <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">SALE</span>}
 
         {badge && !isOnSale && <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">{badge}</span>}
 
-        <img src={image} alt={name} className="w-full h-48 object-contain transform group-hover:scale-105 transition-transform duration-300" />
+        <img src={image} alt={name} className="w-full h-40 object-contain transform group-hover:scale-105 transition-transform duration-300" />
 
         <span className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
           <Heart size={18} className="text-gray-500" />
