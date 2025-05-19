@@ -258,7 +258,7 @@ const FilterProducts = ({products, onFilter}) => {
           <div className="flex items-center space-x-2">
             <input
               type="number"
-              placeholder="NR$0"
+              placeholder="NRs0"
               value={filters.priceRange.min}
               onChange={(e) => handlePriceChange("min", e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
@@ -266,7 +266,7 @@ const FilterProducts = ({products, onFilter}) => {
             <span className="text-gray-500">to</span>
             <input
               type="number"
-              placeholder="NR$100000"
+              placeholder="NRs100000"
               value={filters.priceRange.max}
               onChange={(e) => handlePriceChange("max", e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
