@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {ChevronDown, ChevronUp, Search} from "lucide-react";
+import {ChevronDown, ChevronUp, Search, Filter, RotateCcw} from "lucide-react"; // <-- Import icons
 
 const FilterProducts = ({products, onFilter}) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -110,6 +110,17 @@ const FilterProducts = ({products, onFilter}) => {
     applyFilters(newFilters);
   };
 
+  const resetFilters = () => {
+    setFilters({
+      categories: [],
+      brands: [],
+      priceRange: {min: "", max: ""},
+      ratings: [],
+    });
+    setSearchQuery("");
+    onFilter(products); // Show all products
+  };
+
   const applyFilters = (currentFilters) => {
     let filteredProducts = [...products];
 
@@ -165,8 +176,13 @@ const FilterProducts = ({products, onFilter}) => {
     >
       <div className="mb-4">
         <h3 className="text-sm font-medium text-indigo-700 mb-2 flex items-center">
+          <Filter className="mr-2 h-4 w-4" />
           <span className="mr-2">Filters</span>
           <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full px-2 py-0.5">0</span>
+          <button onClick={resetFilters} className="ml-auto flex items-center gap-1 text-xs text-indigo-600 hover:text-indigo-800 transition-colors px-2 py-1 rounded" title="Reset Filters">
+            <RotateCcw className="h-4 w-4" />
+            Reset
+          </button>
         </h3>
 
         <div className="relative">
