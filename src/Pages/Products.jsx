@@ -45,7 +45,7 @@ export default function Products() {
   const productCount = filteredProducts.length;
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen pb-12">
+    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-[120vh] pb-12">
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Sidebar */}
         <aside className="absolute left-0 top-0 h-full w-72 min-w-[18rem] max-w-[18rem] z-20">
