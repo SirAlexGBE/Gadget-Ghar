@@ -11,9 +11,9 @@ import Catagories from "./Pages/Catagory";
 import PagenotFound from "./Pages/PagenotFound";
 import ProductDetails from "./Pages/ProductDetails";
 import {ScrollToTop} from "../src/ScrollToTop";
-import User from "./Pages/User";
 import {AuthProvider} from "./Context/AuthContext";
 import AuthPage from "./Pages/AuthPage";
+import PersonalInfo from "./Pages/User";
 export default function App() {
   return (
     <>
@@ -30,7 +30,7 @@ export default function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/policy" element={<Policy />} />
-          <Route path="/user" element={<User />} />
+          <Route path="/user" element={<PersonalInfo />} />
           <Route path="*" element={<PagenotFound />} />
           <Route path="/auth" element={<AuthPage />} />
         </Routes>
