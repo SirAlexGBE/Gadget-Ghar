@@ -79,7 +79,7 @@ export default function AuthPage() {
     toast.success("Account created successfully!");
     const redirectTo = location.state?.from || "/";
     setTimeout(() => {
-      login({username: newUser.username, fullName: newUser.fullName});
+      login({username: newUser.username, fullName: newUser.fullName, email: newUser.email});
       navigate(redirectTo, {replace: true});
     }, 1000);
   };
@@ -98,7 +98,7 @@ export default function AuthPage() {
       return;
     }
     toast.success("Login successful!");
-    login({username: user.username, fullName: user.fullName});
+    login({username: user.username, fullName: user.fullName, email: user.email});
 
     // Redirect to previous location or home
     const redirectTo = location.state?.from || "/";
