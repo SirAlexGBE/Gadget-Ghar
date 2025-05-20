@@ -72,14 +72,15 @@ export default function AuthPage() {
       username: formData.username,
       password: formData.password,
     };
-    // After creating a new user
     const updatedUsers = [...users, newUser];
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     setUsers(updatedUsers);
 
     toast.success("Account created successfully!");
+    const redirectTo = location.state?.from || "/";
     setTimeout(() => {
       login({username: newUser.username, fullName: newUser.fullName});
+      navigate(redirectTo, {replace: true});
     }, 1000);
   };
 
