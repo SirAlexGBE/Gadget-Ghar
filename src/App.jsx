@@ -11,6 +11,7 @@ import Catagories from "./Pages/Catagory";
 import PagenotFound from "./Pages/PagenotFound";
 import ProductDetails from "./Pages/ProductDetails";
 import {ScrollToTop} from "../src/ScrollToTop";
+import User from "./Pages/User";
 export default function App() {
   return (
     <>
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/policy" element={<Policy />} />
+        <Route path="/user" element={<User />} />
         <Route path="*" element={<PagenotFound />} />
       </Routes>
       <Footer />

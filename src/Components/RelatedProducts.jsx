@@ -10,7 +10,7 @@ export default function RelatedProducts({product}) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products
           .filter((p) => p.category === product.category && p.id !== product.id)
-          .slice(0, 5)
+          .slice(0, 4)
           .map((relatedProduct) => (
             <Link to={`/productdetails?id=${relatedProduct.id}`} key={relatedProduct.id} className="block">
               <ProductCard
