@@ -1,11 +1,18 @@
-import {Link, useNavigate} from "react-router-dom";
+import {useState, useContext, useRef, useEffect} from "react";
+import {Link, useNavigate, useLocation} from "react-router-dom";
 import {Search, MapPin, Truck, User, Heart, ShoppingCart} from "lucide-react";
 import ProductDropdown from "./ProductDropdown";
-import {useState} from "react";
+import {AuthContext} from "../../Context/AuthContext";
+import UserProfileMenu from "../UserProfileMenu";
 
 function Header() {
   const [search, setSearch] = useState("");
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const triggerRef = useRef(null);
+  const menuRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const {currentUser} = useContext(AuthContext);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -13,6 +20,24 @@ function Header() {
       navigate(`/products?name=${encodeURIComponent(search)}`);
     }
   };
+
+  // Close menu when clicking *outside* both the trigger AND the dropdown
+  useEffect(() => {
+    function handleClickOutside(event) {
+      const clickedInTrigger = triggerRef.current?.contains(event.target);
+      const clickedInMenu = menuRef.current?.contains(event.target);
+
+      if (!clickedInTrigger && !clickedInMenu) {
+        setShowUserMenu(false);
+      }
+    }
+    if (showUserMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [showUserMenu]);
 
   return (
     <>
@@ -44,7 +69,6 @@ function Header() {
               </div>
               <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">GADGET GHAR</div>
             </Link>
-
             {/* Search Bar */}
             <div className="w-full md:flex-1 max-w-xl">
               <form onSubmit={handleSearchSubmit}>
@@ -63,13 +87,31 @@ function Header() {
                 </div>
               </form>
             </div>
-
             {/* User Icons */}
-            <div className="flex items-center gap-4 text-sm">
-              <Link to="/user" className="flex items-center gap-1.5">
+            <div className="flex items-center gap-4 text-sm relative">
+              {/* User Icon & Name (trigger) */}
+              <div
+                ref={triggerRef}
+                className="cursor-pointer flex items-center gap-1"
+                onClick={() => {
+                  if (currentUser) {
+                    setShowUserMenu((prev) => !prev);
+                  } else {
+                    navigate("/auth", {state: {from: location.pathname}});
+                  }
+                }}
+              >
                 <User className="size-5" />
-                <span className="hidden md:inline">Sign in</span>
-              </Link>
+                <span className="hidden md:inline">{currentUser ? currentUser.username : "Sign in"}</span>
+              </div>
+
+              {/* Dropdown */}
+              {showUserMenu && currentUser && (
+                <div ref={menuRef} className="absolute right-0 top-10 z-50">
+                  <UserProfileMenu />
+                </div>
+              )}
+
               <Link to="/wishlist" className="relative">
                 <Heart className="size-5" />
                 <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
