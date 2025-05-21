@@ -49,7 +49,7 @@ function Header() {
               <MapPin className="size-4" />
               <span className="hidden sm:inline">Our store</span>
             </Link>
-            <Link to="/order" className="flex items-center gap-1.5">
+            <Link to="/user/order" className="flex items-center gap-1.5">
               <Truck className="size-4" />
               <span className="hidden sm:inline">Track your order</span>
             </Link>
@@ -112,11 +112,11 @@ function Header() {
                 </div>
               )}
 
-              <Link to="/wishlist" className="relative">
+              <Link to="/user/wishlist" className="relative">
                 <Heart className="size-5" />
                 <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
               </Link>
-              <Link to="/cart" className="flex items-center gap-1.5 relative">
+              <Link to="/user/cart" className="flex items-center gap-1.5 relative">
                 <ShoppingCart className="size-5" />
                 <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
                 <span className="hidden md:inline">Cart</span>

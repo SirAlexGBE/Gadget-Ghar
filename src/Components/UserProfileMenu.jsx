@@ -9,7 +9,7 @@ const UserProfileMenu = () => {
     <div className="w-full max-w-xs min-w-64 p-4 bg-white rounded-xl shadow-lg border border-gray-200">
       <div className="space-y-6">
         {/* User Profile Section */}
-        <Link to="/user">
+        <Link to="/user/personalinfo">
           <div className="flex items-start space-x-3 cursor-pointer hover:bg-blue-50 rounded-lg p-2 transition">
             <div className="flex-shrink-0">
               <div className="w-10 h-10 rounded-full border-2 border-blue-400 flex items-center justify-center bg-blue-100">
@@ -25,19 +25,19 @@ const UserProfileMenu = () => {
 
         {/* Navigation Items */}
         <div className="space-y-4">
-          <Link to="/orders">
+          <Link to="/user/order">
             <div className="flex items-center py-3 px-2 space-x-3 rounded-lg cursor-pointer hover:bg-blue-50 transition group">
               <ShoppingBag className="w-6 h-6 text-gray-700 group-hover:text-blue-600 transition" />
               <span className="text-gray-700 text-lg group-hover:text-blue-600 transition">Orders</span>
             </div>
           </Link>
-          <Link to="/wishlist">
+          <Link to="/user/wishlist">
             <div className="flex items-center py-3 px-2 space-x-3 rounded-lg cursor-pointer hover:bg-blue-50 transition group">
               <Heart className="w-6 h-6 text-gray-700 group-hover:text-blue-600 transition" />
               <span className="text-gray-700 text-lg group-hover:text-blue-600 transition">Wish List</span>
             </div>
           </Link>
-          <Link to="/cart">
+          <Link to="/user/cart">
             <div className="flex items-center py-3 px-2 space-x-3 rounded-lg cursor-pointer hover:bg-blue-50 transition group">
               <ShoppingCart className="w-6 h-6 text-gray-700 group-hover:text-blue-600 transition" />
               <span className="text-gray-700 text-lg group-hover:text-blue-600 transition">Cart</span>
