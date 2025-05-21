@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 export function AuthProvider({children}) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(true); // <-- add loading state
+  const [loading, setLoading] = useState(true);
 
   // Restore user from localStorage on mount
   useEffect(() => {
@@ -13,7 +13,7 @@ export function AuthProvider({children}) {
     if (storedUser) {
       setCurrentUser(storedUser);
     }
-    setLoading(false); // <-- done loading
+    setLoading(false);
   }, []);
 
   const login = (user) => {
@@ -26,5 +26,5 @@ export function AuthProvider({children}) {
     setCurrentUser(null);
   };
 
-  return <AuthContext.Provider value={{currentUser, setCurrentUser, loading}}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{currentUser, setCurrentUser, loading, login, logout}}>{children}</AuthContext.Provider>;
 }

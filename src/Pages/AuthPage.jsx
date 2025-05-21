@@ -48,6 +48,7 @@ export default function AuthPage() {
     });
   };
 
+  // Modified handleSignup function
   const handleSignup = (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
@@ -76,19 +77,23 @@ export default function AuthPage() {
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     setUsers(updatedUsers);
 
-    toast.success("Account created successfully!");
-    const redirectTo = location.state?.from || "/";
-    setTimeout(() => {
-      login({username: newUser.username, fullName: newUser.fullName, email: newUser.email});
-      navigate(redirectTo, {replace: true});
-    }, 1000);
+    // Login the user first
+    login({username: newUser.username, fullName: newUser.fullName, email: newUser.email});
+
+    // Show toast and then navigate
+    toast.success("Account created successfully!", {
+      autoClose: 1000,
+      onClose: () => {
+        const redirectTo = location.state?.from || "/";
+        navigate(redirectTo, {replace: true});
+      },
+    });
   };
 
+  // Modified handleLogin function
   const handleLogin = (e) => {
     e.preventDefault();
-    const user = users.find(
-      (u) => u.username === formData.username || u.email === formData.username // allow email in username field
-    );
+    const user = users.find((u) => u.username === formData.username || u.email === formData.username);
     if (!user) {
       toast.error("User not found");
       return;
@@ -97,16 +102,19 @@ export default function AuthPage() {
       toast.error("Incorrect password");
       return;
     }
-    toast.success("Login successful!");
+
+    // Login the user first
     login({username: user.username, fullName: user.fullName, email: user.email});
 
-    // Redirect to previous location or home
-    const redirectTo = location.state?.from || "/";
-    setTimeout(() => {
-      navigate(redirectTo, {replace: true});
-    }, 1000);
+    // Show toast and then navigate
+    toast.success("Login successful!", {
+      autoClose: 1000,
+      onClose: () => {
+        const redirectTo = location.state?.from || "/";
+        navigate(redirectTo, {replace: true});
+      },
+    });
   };
-
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
     setFormData({
