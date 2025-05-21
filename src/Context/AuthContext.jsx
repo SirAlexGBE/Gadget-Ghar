@@ -5,14 +5,15 @@ export const AuthContext = createContext();
 
 export function AuthProvider({children}) {
   const [currentUser, setCurrentUser] = useState(null);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true); // <-- add loading state
 
+  // Restore user from localStorage on mount
   useEffect(() => {
-    const stored = localStorage.getItem("currentUser");
-    if (stored) {
-      setCurrentUser(JSON.parse(stored));
+    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (storedUser) {
+      setCurrentUser(storedUser);
     }
-    // Removed the navigation to auth page
+    setLoading(false); // <-- done loading
   }, []);
 
   const login = (user) => {
@@ -25,5 +26,5 @@ export function AuthProvider({children}) {
     setCurrentUser(null);
   };
 
-  return <AuthContext.Provider value={{currentUser, login, logout}}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{currentUser, setCurrentUser, loading}}>{children}</AuthContext.Provider>;
 }

@@ -4,20 +4,21 @@ import {useContext, useEffect} from "react";
 import {AuthContext} from "../../Context/AuthContext";
 
 export default function User() {
-  const {currentUser, logout} = useContext(AuthContext);
+  const {currentUser, loading, logout} = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!loading && !currentUser) {
       navigate("/auth", {replace: true});
     }
-  }, [currentUser, navigate]);
+  }, [currentUser, loading, navigate]);
 
   function linkClasses({isActive}) {
     return isActive ? "bg-indigo-700 text-white font-medium rounded-lg shadow-md translate-x-2" : "text-gray-100 hover:bg-indigo-600 hover:translate-x-1";
   }
 
-  // Optionally, render nothing or a loader while redirecting
+  if (loading) return null; // or a loader
+
   if (!currentUser) return null;
 
   return (
@@ -25,7 +26,7 @@ export default function User() {
       <div className="grid grid-cols-12 min-h-screen">
         {/* Sidebar */}
         <div className="col-span-3 bg-indigo-800 shadow-xl">
-          <div className="flex flex-col p-6 h-full">
+          <div className="flex flex-col p-6  sticky top-30 ">
             <h2 className="text-4xl font-bold text-white mb-8 text-center animate-pulse">User Dashboard</h2>
 
             <nav className="flex flex-col space-y-4">
