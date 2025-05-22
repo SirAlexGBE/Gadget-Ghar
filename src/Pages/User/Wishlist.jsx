@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import ProductCard from "../../Components/ProductCard"; // Adjust path if needed
 import {initializeWishlist} from "../../Redux/Slices/WishlistSlice"; // Adjust path if needed
-import {useAuth} from "../../context/AuthContext"; // Adjust path if needed
+import {useAuth} from "../../Context/AuthContext"; // Adjust path if needed
 import {products} from "../../Data/Data"; // <-- Import your product data
 
 const Wishlist = () => {
