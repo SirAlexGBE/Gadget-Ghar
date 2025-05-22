@@ -8,6 +8,8 @@ import RelatedProducts from "../Components/RelatedProducts";
 import SalesProducts from "../Components/Home/SalesProducts";
 import {useDispatch, useSelector} from "react-redux";
 import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
+import {toast} from "react-toastify";
+import {useAuth} from "../Context/AuthContext";
 
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
@@ -15,6 +17,7 @@ export default function ProductDetails() {
   const location = useLocation();
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.wishlist);
+  const {currentUser} = useAuth();
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: "smooth"});
@@ -46,13 +49,22 @@ export default function ProductDetails() {
     if (newQty >= 1) setQuantity(newQty);
   };
 
-  // Wishlist logic
+  // Wishlist logic with login check
   const isProductInWishlist = wishlistItems.includes(product.id);
   const handleWishlistToggle = () => {
+    if (!currentUser) {
+      toast.error("Please login to use the wishlist feature", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
     if (isProductInWishlist) {
       dispatch(removeFromWishlist(product.id));
+      toast.info("Removed from wishlist", {autoClose: 1500});
     } else {
       dispatch(addToWishlist(product.id));
+      toast.success("Added to wishlist", {autoClose: 1500});
     }
   };
 
