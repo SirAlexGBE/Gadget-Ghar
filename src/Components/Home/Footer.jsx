@@ -2,10 +2,25 @@ import {useState} from "react";
 import {Facebook, Instagram, Twitter, Mail, Phone, MapPin} from "lucide-react";
 import {Link} from "react-router-dom";
 import {HashLink} from "react-router-hash-link";
+import {toast} from "react-toastify"; // <-- Add this import
 
 export default function Footer() {
   // Get current year for copyright
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+
+  // Email validation function
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (isValidEmail(email)) {
+      toast.success("Subscribed successfully!");
+      setEmail("");
+    } else {
+      toast.error("Please enter a valid email address.");
+    }
+  };
 
   return (
     <footer className="bg-blue-950 px-5 text-gray-100">
@@ -65,14 +80,20 @@ export default function Footer() {
             {/* Newsletter */}
             <div className="mb-6">
               <p className="mb-2 text-center sm:text-left">Subscribe to our newsletter</p>
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="bg-gray-800 text-gray-100 p-2 rounded sm:rounded-l sm:rounded-r-none flex-grow focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <button className="bg-blue-600 px-4 py-2 rounded sm:rounded-l-none sm:rounded-r hover:bg-blue-700 transition-colors">Subscribe</button>
-              </div>
+              <form onSubmit={handleSubscribe}>
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your email"
+                    className="bg-gray-800 text-gray-100 p-2 rounded sm:rounded-l sm:rounded-r-none flex-grow focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button type="submit" className="bg-blue-600 px-4 py-2 rounded sm:rounded-l-none sm:rounded-r hover:bg-blue-700 transition-colors">
+                    Subscribe
+                  </button>
+                </div>
+              </form>
             </div>
 
             {/* Social Media */}
