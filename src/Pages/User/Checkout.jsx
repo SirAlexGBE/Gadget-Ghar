@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import {products} from "../../Data/Data";
+import {toast} from "react-toastify"; //
+import {useNavigate} from "react-router-dom";
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.cart);
+  const navigate = useNavigate();
 
   // Map cart items to product objects
   const cartProducts = cartItems
@@ -155,7 +158,13 @@ const Checkout = () => {
             onChange={(e) => setDiscountCode(e.target.value)}
             className="flex-1 border border-gray-300 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <button className="bg-white border border-blue-500 text-blue-500 px-6 py-2 rounded-r-md hover:bg-blue-50 transition-colors">Apply</button>
+          <button
+            className="bg-white border border-blue-500 text-blue-500 px-6 py-2 rounded-r-md hover:bg-blue-50 transition-colors"
+            onClick={() => toast.error("Invalid discount code!")}
+            type="button"
+          >
+            Apply
+          </button>
         </div>
         <div className="space-y-3 mb-6">
           <div className="flex justify-between">
@@ -177,7 +186,16 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-        <button className="w-full bg-blue-500 text-white py-4 rounded-md font-medium hover:bg-blue-600 transition-colors">Continue to pay</button>
+        <button
+          className="w-full bg-blue-500 text-white py-4 rounded-md font-medium hover:bg-blue-600 transition-colors"
+          onClick={() =>
+            navigate("/user/payment", {
+              state: {subtotal, shippingCost, discount, grandTotal},
+            })
+          }
+        >
+          Continue to pay
+        </button>
       </div>
     </div>
   );

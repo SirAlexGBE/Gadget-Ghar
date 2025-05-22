@@ -162,19 +162,8 @@ const Cart = () => {
                   <ChevronDown className={`h-4 w-4 transition-transform ${discountOpen ? "rotate-180" : ""}`} />
                 </button>
                 {discountOpen && (
-                  <div className="py-2">
-                    <div className="flex flex-col gap-2">
-                      <input
-                        type="text"
-                        placeholder="Enter discount code"
-                        className="border rounded-md px-2 py-1 text-sm w-full focus:outline-none focus:ring-1 focus:ring-gray-300"
-                        value={discountCode}
-                        onChange={(e) => setDiscountCode(e.target.value)}
-                      />
-                      <button className="bg-gray-800 hover:bg-gray-900 text-white text-xs font-medium rounded-md px-2 py-1 w-full" onClick={() => toast.info(`Discount code ${discountCode} applied!`)}>
-                        Apply Discount
-                      </button>
-                    </div>
+                  <div className="py-1">
+                    <p className="text-xs text-gray-500">Cupons and Discounts options will be updated during checkout.</p>
                   </div>
                 )}
               </div>
