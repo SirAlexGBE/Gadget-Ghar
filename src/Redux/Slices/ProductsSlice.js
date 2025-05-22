@@ -1,5 +1,5 @@
 // Example: src/Redux/Slices/ProductsSlice.js
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const ProductsSlice = createSlice({
   name: "products",
@@ -7,8 +7,12 @@ const ProductsSlice = createSlice({
     allProducts: [], // or your initial products array
   },
   reducers: {
-    // your product reducers here
+    setProducts: (state, action) => {
+      state.allProducts = action.payload;
+    },
+    // ...other reducers if needed
   },
 });
 
+export const {setProducts} = ProductsSlice.actions;
 export default ProductsSlice.reducer;

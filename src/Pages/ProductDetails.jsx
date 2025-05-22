@@ -6,11 +6,15 @@ import productNotFound from "../Animation/Product not found.json";
 import {ShoppingCart, Heart, Star, ChevronRight, Truck, RotateCcw} from "lucide-react";
 import RelatedProducts from "../Components/RelatedProducts";
 import SalesProducts from "../Components/Home/SalesProducts";
+import {useDispatch, useSelector} from "react-redux";
+import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
 
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
   const location = useLocation();
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector((state) => state.wishlist.wishlist);
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: "smooth"});
@@ -40,6 +44,16 @@ export default function ProductDetails() {
 
   const handleQuantityChange = (newQty) => {
     if (newQty >= 1) setQuantity(newQty);
+  };
+
+  // Wishlist logic
+  const isProductInWishlist = wishlistItems.includes(product.id);
+  const handleWishlistToggle = () => {
+    if (isProductInWishlist) {
+      dispatch(removeFromWishlist(product.id));
+    } else {
+      dispatch(addToWishlist(product.id));
+    }
   };
 
   return (
@@ -154,9 +168,14 @@ export default function ProductDetails() {
                 <ShoppingCart className="size-5" />
                 Add to Cart
               </button>
-              <button className="flex items-center justify-center gap-2 border border-gray-300 hover:border-gray-400 hover:bg-gray-50 text-gray-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
-                <Heart className="size-5" />
-                <span className="hidden sm:inline">Wishlist</span>
+              <button
+                className={`flex items-center justify-center gap-2 border ${
+                  isProductInWishlist ? "border-red-400 bg-red-50" : "border-gray-300"
+                } hover:border-gray-400 hover:bg-gray-50 text-gray-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200`}
+                onClick={handleWishlistToggle}
+              >
+                <Heart className={`size-5 ${isProductInWishlist ? "text-red-500 fill-red-500" : ""}`} />
+                <span className="hidden sm:inline">{isProductInWishlist ? "Wishlisted" : "Wishlist"}</span>
               </button>
             </div>
           </div>

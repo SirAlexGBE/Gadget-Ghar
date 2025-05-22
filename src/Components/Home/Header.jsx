@@ -4,6 +4,7 @@ import {Search, MapPin, Truck, User, Heart, ShoppingCart} from "lucide-react";
 import ProductDropdown from "./ProductDropdown";
 import {AuthContext} from "../../Context/AuthContext";
 import UserProfileMenu from "../UserProfileMenu";
+import {useSelector} from "react-redux";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -13,6 +14,7 @@ function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const {currentUser} = useContext(AuthContext);
+  const wishlistCount = useSelector((state) => state.wishlist.wishlist.length);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -114,7 +116,7 @@ function Header() {
 
               <Link to="/user/wishlist" className="relative">
                 <Heart className="size-5" />
-                <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{wishlistCount}</span>
               </Link>
               <Link to="/user/cart" className="flex items-center gap-1.5 relative">
                 <ShoppingCart className="size-5" />

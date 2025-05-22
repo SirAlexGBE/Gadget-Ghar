@@ -6,6 +6,8 @@ import {Player} from "@lottiefiles/react-lottie-player";
 import productNotFound from "../Animation/Product not found.json";
 import FilterProducts from "../Components/FilterProducts";
 import {ChevronDown, Filter, X} from "lucide-react";
+import {useDispatch, useSelector} from "react-redux";
+import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
 
 export default function Products() {
   const [searchParams] = useSearchParams();
@@ -35,6 +37,12 @@ export default function Products() {
 
   // Mobile filter drawer state
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
+
+  // Redux dispatch
+  const dispatch = useDispatch();
+
+  // Wishlist state from Redux
+  const wishlistItems = useSelector((state) => state.wishlist.wishlist);
 
   // Update filteredProducts when URL query changes
   useEffect(() => {
@@ -161,20 +169,25 @@ export default function Products() {
           <main>
             {filteredProducts.length > 0 ? (
               <div className="grid justify-items-center grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
-                {getSortedProducts().map((product) => (
-                  <Link to={`/productdetails?id=${product.id}`} key={product.id} className="block">
-                    <ProductCard
-                      image={product.image}
-                      name={product.name}
-                      brand={product.brand}
-                      price={product.price}
-                      isOnSale={product.isOnSale}
-                      salePrice={product.salePrice}
-                      badge={product.badge}
-                      rating={product.rating}
-                    />
-                  </Link>
-                ))}
+                {getSortedProducts().map((product) => {
+                  const isProductInWishlist = wishlistItems.includes(product.id);
+
+                  return (
+                    <Link to={`/productdetails?id=${product.id}`} key={product.id} className="block">
+                      <ProductCard
+                        product={product}
+                        onWishlistToggle={() => {
+                          if (isProductInWishlist) {
+                            dispatch(removeFromWishlist(product.id));
+                          } else {
+                            dispatch(addToWishlist(product.id));
+                          }
+                        }}
+                        isInWishlist={isProductInWishlist}
+                      />
+                    </Link>
+                  );
+                })}
               </div>
             ) : (
               <div className="flex flex-col items-center py-4 md:py-7">

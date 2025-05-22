@@ -1,5 +1,6 @@
-import React, {createContext, useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+// contexts/AuthContext.js
+import React, {createContext, useState, useEffect, useContext} from "react"; // <--- Add useContext here
+import {useNavigate} from "react-router-dom"; // (You might not need useNavigate in the context itself, but it's fine if it's there)
 
 export const AuthContext = createContext();
 
@@ -28,3 +29,12 @@ export function AuthProvider({children}) {
 
   return <AuthContext.Provider value={{currentUser, setCurrentUser, loading, login, logout}}>{children}</AuthContext.Provider>;
 }
+
+// <--- ADD THIS CUSTOM HOOK --->
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

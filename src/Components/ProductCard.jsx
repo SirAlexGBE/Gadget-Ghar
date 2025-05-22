@@ -1,18 +1,38 @@
+// Components/ProductCard.jsx
 import {Heart, Star} from "lucide-react";
+import {useDispatch, useSelector} from "react-redux";
+import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
 
-const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge, rating}) => {
+const ProductCard = ({product}) => {
+  if (!product) return null;
+
+  const {id, image, name, brand, price, isOnSale, salePrice, badge, rating} = product;
+
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector((state) => state.wishlist.wishlist);
+
+  // Now wishlistItems is an array of IDs
+  const isProductInWishlist = wishlistItems.includes(id);
+
+  const handleWishlistToggle = () => {
+    if (isProductInWishlist) {
+      dispatch(removeFromWishlist(id));
+    } else {
+      dispatch(addToWishlist(id)); // Only the id!
+    }
+  };
+
   return (
     <div className="group flex flex-col w-58 h-80 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white max-w-xs">
       {/* Product Image Container */}
-      <div className="relative  overflow-hidden">
+      <div className="relative overflow-hidden">
         {isOnSale && <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">SALE</span>}
-
         {badge && !isOnSale && <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">{badge}</span>}
 
         <img src={image} alt={name} className="w-full h-40 object-contain transform group-hover:scale-105 transition-transform duration-300" />
 
-        <span className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
-          <Heart size={18} className="text-gray-500" />
+        <span className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md cursor-pointer" onClick={handleWishlistToggle}>
+          <Heart size={18} className={isProductInWishlist ? "text-red-500 fill-current" : "text-gray-500"} />
         </span>
       </div>
 
@@ -39,7 +59,6 @@ const ProductCard = ({image, name, brand, price, isOnSale, salePrice, badge, rat
               <span className="text-gray-800 font-bold text-sm">{price}</span>
             )}
           </div>
-
           <button className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-3 rounded text-sm font-medium transition-colors duration-200">Add to Cart</button>
         </div>
       </div>

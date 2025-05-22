@@ -3,8 +3,13 @@ import {products} from "../../Data/Data";
 import ProductCard from "../ProductCard";
 import {Link} from "react-router-dom";
 import {Award} from "lucide-react";
+import {useDispatch, useSelector} from "react-redux";
+import {addToWishlist, removeFromWishlist} from "../../Redux/Slices/WishlistSlice";
 
 const BSProducts = () => {
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector((state) => state.wishlist.wishlist);
+
   // Filter best-selling products and take up to 5
   const bestSellingProducts = products.filter((p) => p.badge === "BESTSELLER").slice(0, 4);
 
@@ -23,13 +28,26 @@ const BSProducts = () => {
 
       {/* Products grid with improved spacing */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
-        {bestSellingProducts.map((product) => (
-          <Link to={`/productdetails?id=${product.id}`} key={product.id} className="group transform transition-all duration-300 hover:scale-105">
-            <div className="flex-1 min-w-[220px] max-w-xs overflow-hidden rounded-xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-xl">
-              <ProductCard {...product} />
-            </div>
-          </Link>
-        ))}
+        {bestSellingProducts.map((product) => {
+          const isProductInWishlist = wishlistItems.includes(product.id);
+          return (
+            <Link to={`/productdetails?id=${product.id}`} key={product.id} className="group transform transition-all duration-300 hover:scale-105">
+              <div className="flex-1 min-w-[220px] max-w-xs overflow-hidden rounded-xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-xl">
+                <ProductCard
+                  product={product}
+                  isInWishlist={isProductInWishlist}
+                  onWishlistToggle={() => {
+                    if (isProductInWishlist) {
+                      dispatch(removeFromWishlist(product.id));
+                    } else {
+                      dispatch(addToWishlist(product.id));
+                    }
+                  }}
+                />
+              </div>
+            </Link>
+          );
+        })}
       </div>
 
       {/* CTA button with improved styling */}
