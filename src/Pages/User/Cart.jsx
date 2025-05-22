@@ -124,7 +124,7 @@ const Cart = () => {
             </table>
           </div>
           {cartProducts.length > 0 && (
-            <button className="mt-6 bg-red-600 text-white px-4 py-2 rounded" onClick={handleClearCart}>
+            <button className="mt-6 bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded" onClick={handleClearCart}>
               Clear Cart
             </button>
           )}
@@ -169,7 +169,7 @@ const Cart = () => {
               </div>
               <div className="mt-3">
                 <button
-                  className="w-full bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md py-2 px-3"
+                  className="w-full bg-blue-600 hover:bg-blue-900 text-white text-sm font-medium rounded-md py-2 px-3"
                   onClick={() => navigate("/user/checkout")}
                   disabled={cartProducts.length === 0}
                 >

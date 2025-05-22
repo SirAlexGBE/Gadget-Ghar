@@ -22,6 +22,7 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Checkout from "./Pages/User/Checkout";
 import Payment from "./Pages/User/Payment";
+import Orderconfirmation from "./Pages/User/Oder-confirmation";
 
 export default function App() {
   return (
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="Cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="order" element={<Orders />} />
+            <Route path="order-confirmation" element={<Orderconfirmation />} />
             <Route path="payment" element={<Payment />} />
           </Route>
           <Route path="*" element={<PagenotFound />} />

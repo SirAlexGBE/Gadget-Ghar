@@ -109,7 +109,7 @@ const ProductCard = ({product}) => {
             )}
           </div>
           <button
-            className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-3 rounded text-sm font-medium transition-colors duration-200 flex items-center justify-center gap-2"
+            className="w-full mt-2 bg-blue-700 hover:bg-blue-900 text-white py-3 px-3 rounded text-sm font-medium transition-colors duration-200 flex items-center justify-center gap-2"
             onClick={handleAddToCart}
             disabled={isProductInCart}
           >

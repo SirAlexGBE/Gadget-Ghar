@@ -1,10 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+const initialState = {
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
+};
+
 const CartSlice = createSlice({
   name: "cart",
-  initialState: {
-    cart: [],
-  },
+  initialState,
   reducers: {
     addToCart: (state, action) => {
       const exists = state.cart.find((item) => item.id === action.payload.id);
@@ -50,11 +52,16 @@ const CartSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
       localStorage.setItem("cart", JSON.stringify([]));
+      // Update users array
       const users = JSON.parse(localStorage.getItem("users")) || [];
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       if (currentUser) {
+        // Update users array
         const updatedUsers = users.map((u) => (u.username === currentUser.username ? {...u, cart: []} : u));
         localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Update currentUser object
+        const updatedCurrentUser = {...currentUser, cart: []};
+        localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser));
       }
     },
     initializeCart: (state) => {
