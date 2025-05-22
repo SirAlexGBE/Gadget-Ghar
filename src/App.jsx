@@ -18,13 +18,16 @@ import PersonalInfo from "./Pages/User/PersonalInfo";
 import Wishlist from "./Pages/User/Wishlist";
 import Cart from "./Pages/User/Cart";
 import Orders from "./Pages/User/Orders";
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function App() {
   return (
     <>
       <ScrollToTop />
       <AuthProvider>
         <Header />
-
+        <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

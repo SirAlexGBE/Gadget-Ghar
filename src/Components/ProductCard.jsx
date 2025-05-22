@@ -2,6 +2,8 @@
 import {Heart, Star} from "lucide-react";
 import {useDispatch, useSelector} from "react-redux";
 import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
+import {toast} from "react-toastify";
+import {useAuth} from "../Context/AuthContext"; // Adjust the path based on your file structure
 
 const ProductCard = ({product}) => {
   if (!product) return null;
@@ -11,14 +13,43 @@ const ProductCard = ({product}) => {
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.wishlist);
 
+  // Get user authentication status from AuthContext
+  const {currentUser} = useAuth();
+  const isLoggedIn = !!currentUser;
+
   // Now wishlistItems is an array of IDs
   const isProductInWishlist = wishlistItems.includes(id);
 
-  const handleWishlistToggle = () => {
+  const handleWishlistToggle = (e) => {
+    // Prevent the link navigation when clicking the heart
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Check if user is logged in before proceeding
+    if (!isLoggedIn) {
+      toast.error("Please login to use the wishlist feature", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      return;
+    }
+
     if (isProductInWishlist) {
       dispatch(removeFromWishlist(id));
+      toast.success("Removed from wishlist", {
+        position: "top-right",
+        autoClose: 2000,
+      });
     } else {
       dispatch(addToWishlist(id)); // Only the id!
+      toast.success("Added to wishlist", {
+        position: "top-right",
+        autoClose: 2000,
+      });
     }
   };
 
