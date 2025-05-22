@@ -20,6 +20,7 @@ import Cart from "./Pages/User/Cart";
 import Orders from "./Pages/User/Orders";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Checkout from "./Pages/User/Checkout";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="Personalinfo" element={<PersonalInfo />} />
             <Route path="Wishlist" element={<Wishlist />} />
             <Route path="Cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
             <Route path="order" element={<Orders />} />
           </Route>
           <Route path="*" element={<PagenotFound />} />

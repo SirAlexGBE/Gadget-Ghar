@@ -5,11 +5,13 @@ import {initializeCart, removeFromCart, updateCartQuantity, clearCart} from "../
 import {useAuth} from "../../Context/AuthContext";
 import {toast} from "react-toastify";
 import {ChevronUp, ChevronDown, Trash, Edit} from "lucide-react";
+import {useNavigate} from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
   const {currentUser, loading: authLoading} = useAuth();
+  const navigate = useNavigate();
 
   const [shippingOpen, setShippingOpen] = useState(false);
   const [discountOpen, setDiscountOpen] = useState(false);
@@ -57,7 +59,7 @@ const Cart = () => {
 
   return (
     <div className="w-full py-8 px-4">
-      <h1 className="text-4xl font-bold text-center mb-8">Shopping Cart</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Your Cart</h1>
       <div className="grid xl:grid-cols-3 gap-4">
         <div className="xl:col-span-2">
           <div className="border rounded-md overflow-hidden">
@@ -179,7 +181,7 @@ const Cart = () => {
               <div className="mt-3">
                 <button
                   className="w-full bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md py-2 px-3"
-                  onClick={() => toast.success("Proceeding to checkout!")}
+                  onClick={() => navigate("/user/checkout")}
                   disabled={cartProducts.length === 0}
                 >
                   Proceed to Checkout

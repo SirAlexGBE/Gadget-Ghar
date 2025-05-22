@@ -15,6 +15,7 @@ function Header() {
   const location = useLocation();
   const {currentUser} = useContext(AuthContext);
   const wishlistCount = useSelector((state) => state.wishlist.wishlist.length);
+  const cartCount = useSelector((state) => state.cart.cart.reduce((sum, item) => sum + item.quantity, 0));
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -120,7 +121,7 @@ function Header() {
               </Link>
               <Link to="/user/cart" className="flex items-center gap-1.5 relative">
                 <ShoppingCart className="size-5" />
-                <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{cartCount}</span>
                 <span className="hidden md:inline">Cart</span>
               </Link>
             </div>
