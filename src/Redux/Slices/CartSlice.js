@@ -4,25 +4,28 @@ const initialState = {
   cart: JSON.parse(localStorage.getItem("cart")) || [],
 };
 
-const CartSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const exists = state.cart.find((item) => item.id === action.payload.id);
-      if (exists) {
-        exists.quantity += action.payload.quantity || 1;
+      // Add item logic
+      const item = action.payload;
+      const existing = state.cart.find((i) => i.id === item.id);
+      if (existing) {
+        existing.quantity += item.quantity || 1;
       } else {
-        state.cart.push({...action.payload, quantity: action.payload.quantity || 1});
+        state.cart.push({...item, quantity: item.quantity || 1});
       }
-      // Save cart to localStorage
+      // Sync to localStorage
       localStorage.setItem("cart", JSON.stringify(state.cart));
-      // Save cart to current user in users array
+      // Sync to user
       const users = JSON.parse(localStorage.getItem("users")) || [];
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       if (currentUser) {
         const updatedUsers = users.map((u) => (u.username === currentUser.username ? {...u, cart: state.cart} : u));
         localStorage.setItem("users", JSON.stringify(updatedUsers));
+        localStorage.setItem("currentUser", JSON.stringify({...currentUser, cart: state.cart}));
       }
     },
     removeFromCart: (state, action) => {
@@ -76,5 +79,5 @@ const CartSlice = createSlice({
   },
 });
 
-export const {addToCart, removeFromCart, updateCartQuantity, clearCart, initializeCart} = CartSlice.actions;
-export default CartSlice.reducer;
+export const {addToCart, removeFromCart, updateCartQuantity, clearCart, initializeCart} = cartSlice.actions;
+export default cartSlice.reducer;
