@@ -1,7 +1,8 @@
 // Components/ProductCard.jsx
-import {Heart, Star} from "lucide-react";
+import {Heart, Star, ShoppingCart} from "lucide-react";
 import {useDispatch, useSelector} from "react-redux";
 import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
+import {addToCart} from "../Redux/Slices/CartSlice";
 import {toast} from "react-toastify";
 import {useAuth} from "../Context/AuthContext"; // Adjust the path based on your file structure
 
@@ -12,6 +13,7 @@ const ProductCard = ({product}) => {
 
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.wishlist);
+  const cartItems = useSelector((state) => state.cart.cart);
 
   // Get user authentication status from AuthContext
   const {currentUser} = useAuth();
@@ -19,6 +21,7 @@ const ProductCard = ({product}) => {
 
   // Now wishlistItems is an array of IDs
   const isProductInWishlist = wishlistItems.includes(id);
+  const isProductInCart = cartItems.some((item) => item.id === id);
 
   const handleWishlistToggle = (e) => {
     // Prevent the link navigation when clicking the heart
@@ -40,7 +43,7 @@ const ProductCard = ({product}) => {
 
     if (isProductInWishlist) {
       dispatch(removeFromWishlist(id));
-      toast.success("Removed from wishlist", {
+      toast.info("Removed from wishlist", {
         position: "top-right",
         autoClose: 2000,
       });
@@ -50,6 +53,21 @@ const ProductCard = ({product}) => {
         position: "top-right",
         autoClose: 2000,
       });
+    }
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isLoggedIn) {
+      toast.error("Please login to add to cart");
+      return;
+    }
+    if (!isProductInCart) {
+      dispatch(addToCart({...product, quantity: 1}));
+      toast.success("Successfully added to cart!");
+    } else {
+      toast.info("Already in cart");
     }
   };
 
@@ -90,7 +108,14 @@ const ProductCard = ({product}) => {
               <span className="text-gray-800 font-bold text-sm">{price}</span>
             )}
           </div>
-          <button className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-3 rounded text-sm font-medium transition-colors duration-200">Add to Cart</button>
+          <button
+            className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-3 rounded text-sm font-medium transition-colors duration-200 flex items-center justify-center gap-2"
+            onClick={handleAddToCart}
+            disabled={isProductInCart}
+          >
+            <ShoppingCart size={16} />
+            {isProductInCart ? "In Cart" : "Add to Cart"}
+          </button>
         </div>
       </div>
     </div>

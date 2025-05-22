@@ -8,21 +8,11 @@ const CartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const exists = state.cart.find((item) => item.id === action.payload.id);
-      if (!exists) {
-        state.cart.push(action.payload);
-        // Save cart to localStorage
-        localStorage.setItem("cart", JSON.stringify(state.cart));
-        // Save cart to current user in users array
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (currentUser) {
-          const updatedUsers = users.map((u) => (u.username === currentUser.username ? {...u, cart: state.cart} : u));
-          localStorage.setItem("users", JSON.stringify(updatedUsers));
-        }
+      if (exists) {
+        exists.quantity += action.payload.quantity || 1;
+      } else {
+        state.cart.push({...action.payload, quantity: action.payload.quantity || 1});
       }
-    },
-    removeFromCart: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload);
       // Save cart to localStorage
       localStorage.setItem("cart", JSON.stringify(state.cart));
       // Save cart to current user in users array
@@ -33,8 +23,51 @@ const CartSlice = createSlice({
         localStorage.setItem("users", JSON.stringify(updatedUsers));
       }
     },
+    removeFromCart: (state, action) => {
+      state.cart = state.cart.filter((item) => item.id !== action.payload);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+        const updatedUsers = users.map((u) => (u.username === currentUser.username ? {...u, cart: state.cart} : u));
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+      }
+    },
+    updateCartQuantity: (state, action) => {
+      const {id, quantity} = action.payload;
+      const item = state.cart.find((item) => item.id === id);
+      if (item && quantity > 0) {
+        item.quantity = quantity;
+      }
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+        const updatedUsers = users.map((u) => (u.username === currentUser.username ? {...u, cart: state.cart} : u));
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+      }
+    },
+    clearCart: (state) => {
+      state.cart = [];
+      localStorage.setItem("cart", JSON.stringify([]));
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+        const updatedUsers = users.map((u) => (u.username === currentUser.username ? {...u, cart: []} : u));
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+      }
+    },
+    initializeCart: (state) => {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser && currentUser.cart) {
+        state.cart = currentUser.cart;
+      } else {
+        const localCart = JSON.parse(localStorage.getItem("cart")) || [];
+        state.cart = localCart;
+      }
+    },
   },
 });
 
-export const {addToCart, removeFromCart} = CartSlice.actions;
+export const {addToCart, removeFromCart, updateCartQuantity, clearCart, initializeCart} = CartSlice.actions;
 export default CartSlice.reducer;

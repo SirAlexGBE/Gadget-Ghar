@@ -8,6 +8,7 @@ import RelatedProducts from "../Components/RelatedProducts";
 import SalesProducts from "../Components/Home/SalesProducts";
 import {useDispatch, useSelector} from "react-redux";
 import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
+import {addToCart} from "../Redux/Slices/CartSlice";
 import {toast} from "react-toastify";
 import {useAuth} from "../Context/AuthContext";
 
@@ -17,6 +18,7 @@ export default function ProductDetails() {
   const location = useLocation();
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.wishlist);
+  const cartItems = useSelector((state) => state.cart.cart);
   const {currentUser} = useAuth();
 
   useEffect(() => {
@@ -65,6 +67,21 @@ export default function ProductDetails() {
     } else {
       dispatch(addToWishlist(product.id));
       toast.success("Added to wishlist", {autoClose: 1500});
+    }
+  };
+
+  const isProductInCart = cartItems.some((item) => item.id === product.id);
+
+  const handleAddToCart = () => {
+    if (!currentUser) {
+      toast.error("Please login to add to cart");
+      return;
+    }
+    if (!isProductInCart) {
+      dispatch(addToCart({...product, quantity}));
+      toast.success("Successfully added to cart!");
+    } else {
+      toast.info("Already in cart");
     }
   };
 
@@ -176,9 +193,13 @@ export default function ProductDetails() {
 
             {/* Action buttons */}
             <div className="flex gap-4">
-              <button className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200">
+              <button
+                className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
+                onClick={handleAddToCart}
+                disabled={isProductInCart}
+              >
                 <ShoppingCart className="size-5" />
-                Add to Cart
+                {isProductInCart ? "In Cart" : "Add to Cart"}
               </button>
               <button
                 className={`flex items-center justify-center gap-2 border ${
