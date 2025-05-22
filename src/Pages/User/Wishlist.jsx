@@ -1,16 +1,14 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
-import ProductCard from "../../Components/ProductCard"; // Adjust path if needed
-import {initializeWishlist} from "../../Redux/Slices/WishlistSlice"; // Adjust path if needed
-import {useAuth} from "../../Context/AuthContext"; // Adjust path if needed
-import {products} from "../../Data/Data"; // <-- Import your product data
+import ProductCard from "../../Components/ProductCard";
+import {initializeWishlist, clearWishlist} from "../../Redux/Slices/WishlistSlice"; // <-- import clearWishlist
+import {useAuth} from "../../Context/AuthContext";
+import {products} from "../../Data/Data";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
   const wishlistIds = useSelector((state) => state.wishlist.wishlist);
-
-  // Get currentUser and loading state from your AuthContext
   const {currentUser, loading: authLoading} = useAuth();
 
   useEffect(() => {
@@ -19,7 +17,6 @@ const Wishlist = () => {
     }
   }, [dispatch, currentUser, authLoading]);
 
-  // Show a loading indicator while authentication status is being determined
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -28,7 +25,6 @@ const Wishlist = () => {
     );
   }
 
-  // Map wishlist IDs to product objects from products data
   const wishlistItems = products.filter((product) => wishlistIds.includes(product.id));
 
   return (
@@ -44,6 +40,15 @@ const Wishlist = () => {
                 You are currently viewing a guest wishlist. <br />
                 <span className="font-semibold text-blue-600">Log in</span> to access your personalized, persistent wishlist.
               </p>
+            </div>
+          )}
+
+          {/* Clear Wishlist Button */}
+          {wishlistItems.length > 0 && (
+            <div className="flex justify-center mb-4">
+              <button onClick={() => dispatch(clearWishlist())} className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded font-medium transition">
+                Clear Wishlist
+              </button>
             </div>
           )}
         </div>

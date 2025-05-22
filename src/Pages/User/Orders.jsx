@@ -1,10 +1,28 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
+import {cancelOrder} from "../../Redux/Slices/OrderSlice";
+import {toast} from "react-toastify";
 
 export default function Orders() {
-  // Get orders from Redux or localStorage fallback
+  const dispatch = useDispatch();
   const orders = useSelector((state) => state.order.order) || JSON.parse(localStorage.getItem("order")) || [];
+
+  // Modal state
+  const [showModal, setShowModal] = useState(false);
+  const [orderToCancel, setOrderToCancel] = useState(null);
+
+  const openModal = (orderId) => {
+    setOrderToCancel(orderId);
+    setShowModal(true);
+  };
+
+  const handleCancelOrder = () => {
+    dispatch(cancelOrder(orderToCancel));
+    setShowModal(false);
+    setOrderToCancel(null);
+    toast.success("Order cancelled successfully!");
+  };
 
   if (!orders.length) {
     return (
@@ -23,8 +41,8 @@ export default function Orders() {
       <h1 className="text-3xl font-bold mb-8 text-center">My Orders</h1>
       <div className="space-y-8">
         {orders
-          .slice() // copy array
-          .reverse() // show latest first
+          .slice()
+          .reverse()
           .map((order) => (
             <div key={order.id} className="bg-white rounded-lg shadow p-6">
               <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
@@ -39,6 +57,11 @@ export default function Orders() {
                 </div>
                 <div>
                   <span className="font-semibold">Payment:</span> <span className="capitalize">{order.paymentMethod}</span>
+                </div>
+                <div>
+                  <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded font-medium transition" onClick={() => openModal(order.id)}>
+                    Cancel Order
+                  </button>
                 </div>
               </div>
               <div className="border-t my-3"></div>
@@ -79,6 +102,24 @@ export default function Orders() {
             </div>
           ))}
       </div>
+
+      {/* Modal for cancel confirmation */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
+            <h2 className="text-xl font-bold mb-4 text-center">Cancel Order</h2>
+            <p className="mb-6 text-gray-700 text-center">Are you sure you want to cancel this order?</p>
+            <div className="flex justify-center gap-4">
+              <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded font-medium" onClick={() => setShowModal(false)}>
+                No
+              </button>
+              <button className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded font-medium" onClick={handleCancelOrder}>
+                Yes, Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

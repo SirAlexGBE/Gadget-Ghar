@@ -74,9 +74,18 @@ const WishlistSlice = createSlice({
     clearWishlist: (state) => {
       state.wishlist = [];
       localStorage.removeItem("wishlist"); // Clear generic wishlist
-      // Note: This does NOT clear the user-specific wishlist in the 'users' array.
-      // If you need to clear a user's wishlist on logout, handle that in your logout logic
-      // within AuthContext or a separate thunk if more complex.
+
+      // Also clear for logged-in user
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser && currentUser.username) {
+        // Update users array
+        const updatedUsers = users.map((u) => (u.username === currentUser.username ? {...u, wishlist: []} : u));
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Update currentUser object
+        const updatedCurrentUser = {...currentUser, wishlist: []};
+        localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser));
+      }
     },
   },
 });
