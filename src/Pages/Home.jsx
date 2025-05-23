@@ -11,6 +11,7 @@ import NewProducts from "../Components/Home/NewProducts";
 import FeaturedProducts from "../Components/Home/FeaturedProducts";
 import BSProducts from "../Components/Home/BestSellar";
 import LimitedProducts from "../Components/Home/Limited";
+import {ToastContainer} from "react-toastify";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         <Brands />
         <LimitedProducts />
         <Review />
+        <ToastContainer position="top-right" autoClose={3000} />
       </div>
     </>
   );

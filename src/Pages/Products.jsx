@@ -8,6 +8,7 @@ import FilterProducts from "../Components/FilterProducts";
 import {ChevronDown, Filter, X} from "lucide-react";
 import {useDispatch, useSelector} from "react-redux";
 import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
+import {ToastContainer} from "react-toastify";
 
 export default function Products() {
   const [searchParams] = useSearchParams();
@@ -88,6 +89,7 @@ export default function Products() {
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen pb-12">
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="max-w-7xl mx-auto px-4 relative ">
         {/* Mobile Filter Button */}
         <div className="md:hidden sticky top-0 z-30 bg-gradient-to-r from-indigo-500 to-purple-600 p-4 rounded-b-lg shadow-md flex justify-between items-center">

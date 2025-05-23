@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {products} from "../../Data/Data";
 import {initializeCart, removeFromCart, updateCartQuantity, clearCart} from "../../Redux/Slices/CartSlice";
 import {useAuth} from "../../Context/AuthContext";
-import {toast} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import {ChevronUp, ChevronDown, Trash, Edit} from "lucide-react";
 import {useNavigate} from "react-router-dom";
 
@@ -60,6 +60,7 @@ const Cart = () => {
   return (
     <div className="w-full py-4 sm:py-8 px-4">
       <h1 className="text-2xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">Your Cart</h1>
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="flex flex-col lg:grid lg:grid-cols-3 gap-4 lg:gap-6">
         {/* Cart Items Section */}
         <div className="lg:col-span-2">

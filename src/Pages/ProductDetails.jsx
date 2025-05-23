@@ -11,7 +11,7 @@ import {addToWishlist, removeFromWishlist} from "../Redux/Slices/WishlistSlice";
 import {addToCart} from "../Redux/Slices/CartSlice";
 import {toast} from "react-toastify";
 import {useAuth} from "../Context/AuthContext";
-
+import {ToastContainer} from "react-toastify";
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
@@ -87,6 +87,7 @@ export default function ProductDetails() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="max-w-7xl mx-auto p-6">
         <div className="text-sm text-gray-500 mb-8 flex items-center">
           <Link to="/" className="hover:text-blue-600">

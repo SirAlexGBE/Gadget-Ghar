@@ -5,6 +5,7 @@ import ProductCard from "../../Components/ProductCard";
 import {initializeWishlist, clearWishlist} from "../../Redux/Slices/WishlistSlice"; // <-- import clearWishlist
 import {useAuth} from "../../Context/AuthContext";
 import {products} from "../../Data/Data";
+import {ToastContainer} from "react-toastify";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const Wishlist = () => {
       <div className="w-full px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-4 text-gray-800 text-center">Your Wishlist</h1>
-
+          <ToastContainer position="top-right" autoClose={3000} />
           {/* Message for guest users */}
           {!currentUser && (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">

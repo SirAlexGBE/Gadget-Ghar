@@ -6,7 +6,7 @@ import {AuthContext} from "../Context/AuthContext";
 const UserProfileMenu = () => {
   const {currentUser, logout} = useContext(AuthContext);
   return (
-    <div className="w-full max-w-xs min-w-64 p-4 bg-white rounded-xl shadow-lg border border-gray-200">
+    <div className="w-full  min-w-64 p-4 overflow-scroll bg-white rounded-xl shadow-lg border border-gray-200">
       <div className="space-y-6">
         {/* User Profile Section */}
         <Link to="/user/personalinfo">
